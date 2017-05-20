@@ -4,6 +4,8 @@ from __future__ import unicode_literals
 import datetime
 import json
 import logging
+import time
+import uuid
 
 from django.http import HttpResponse, QueryDict, Http404
 from django.db.models import Q
@@ -70,8 +72,28 @@ def landing(request, url):
     #    QUERY_STRING
     # request.GET.get("w")
 
+    # У каждого пользователя должна быть сесссия. По ней буем дальше трэкать стату
+    if not request.session.session_key:
+        request.session.create()
+
+    # Уникальный идентификатор показа. Записывается только в лог и прокидывается во все события дальше
+    impression_id = str(uuid.uuid4())
+
+    ts = time.time()
     # Сюда складывается вся инфа для статистики
-    statistics = {}
+    content = {}
+    statistics = {
+        "sessionid": request.session.session_key,
+        "timestamp": ts,
+        "datetime": datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%SZ'),
+        "impression_id": impression_id,
+        "user_agent": request.META.get('HTTP_USER_AGENT'),
+        "remote_addr": request.META.get('REMOTE_ADDR'),
+        "http_x_real_ip": request.META.get('HTTP_X_REAL_IP'),
+        "http_x_forwarded_for": request.META.get('HTTP_X_FORWARDED_FOR'),
+        "http_referer": request.META.get('HTTP_REFERER'),
+    }
+    logger.debug("---META: {}".format(request.META))
 
     try:
         host = Host.objects.get(domain=request.META['HTTP_HOST'])
@@ -81,7 +103,6 @@ def landing(request, url):
 
     preview = request.GET.get('preview', False)
     statistics["preview"] = preview
-    content = {}
     page = None
     try:
         page = Page.objects.get(url=url, host=host)
@@ -170,6 +191,7 @@ def landing(request, url):
     content["page"] = page
     # Пока так, потом будем менять в зависимости от лэндинга
     content["host"] = request.META['HTTP_HOST']
+    content["statistics"] =  statistics
 
     # Подготавливаем шаблон
     response = render(request, page.template, content)
