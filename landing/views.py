@@ -48,6 +48,12 @@ def index(request):
     return render(request, 'index.html', content)
 
 def landing(request, url):
+    # Логика прилипания креатива:
+    #   В первый раз пользователю назначается креатив исходя из его сегмента и распределения во AB
+    #   При следующем заходе, если пользователь попал в сегмент, то ищется предыдущий креатив в этом сегменте
+    #   Если пользователь не попал в сегмент, то ищется последний показанный креатив
+    #   Если креатив не найден, то ничего не показываем (дефолтный шаблон)
+    # 
     # creative = get_object_or_404(Question, pk=question_id)
 
     # request.COOKIES
@@ -60,46 +66,97 @@ def landing(request, url):
     #    QUERY_STRING
     # request.GET.get("w")
     preview = request.GET.get('preview', False)
-    page = Page.objects.get(url=url)
+    content = {}
+    page = None
+    try:
+        page = Page.objects.get(url=url)
+        # Log: page id success loaded
+    except Page.DoesNotExist:
+        page = Page.objects.filter(purpose="default")
+        if len(page):
+            page = page[0]
+            # Log: default page id success loaded
+        else:
+            page = Page.objects.filter()[0]
+            # Log: other page id success loaded
 
     creative = None
-    content = {}
-    creative_id = request.GET.get('creative_id', request.COOKIES.get('creative_id_for_page_%s'%page.url))
+    # creative_id = request.GET.get('creative_id', request.COOKIES.get('creative_id_for_page_%s'%page.url))
+    # Только для прямого вызова креатива
+    creative_id = request.GET.get('creative_id')
     if creative_id is not None:
-        creative = Creative.objects.get(pk=creative_id)
+        try:
+            creative = Creative.objects.get(pk=creative_id)
+            # Log: creative id success loaded
+        except Creative.DoesNotExist:
+            pass
 
+    # Сюда сохраним отработавшую стратегию
+    active_line_item = None
     if not creative:
         line_items = LineItem.objects.filter(page=page).order_by('priority').all()
+        # Log: lineitems (id list) success loaded
         for line_item in line_items:
             segment = line_item.segment
             rule = segment.content
             res = eval(rule)
             if res:
+                active_line_item = line_item
                 query = QueryDict(request.META['QUERY_STRING'])
-                abrules = ABRule.objects.filter(line_item=line_item.id).all()
-                if len(abrules):
-                    target_abrule = abrules[0]
-                    target_number = target_abrule.cnt / float(target_abrule.percentage)
-                    for abrule in abrules:
-                        tmp_target_number = abrule.cnt / float(abrule.percentage)
-                        if tmp_target_number < target_number:
-                            target_number = tmp_target_number
-                            target_abrule = abrule
+                # Ищем креатив для конкретной стратегии на случай если пользователь уже видел креатив (попал в ab-test)
+                creative_id = request.COOKIES.get('creative_id_for_page_%s_and_li_%s'%(page.url, line_item.id))
+                if creative_id is not None:
+                    try:
+                        creative = Creative.objects.get(pk=creative_id)
+                        # Log: creative id success loaded
+                    except Creative.DoesNotExist:
+                        abrules = ABRule.objects.filter(line_item=line_item.id).all()
+                        if len(abrules):
+                            target_abrule = abrules[0]
+                            target_number = target_abrule.cnt / float(target_abrule.percentage)
+                            for abrule in abrules:
+                                tmp_target_number = abrule.cnt / float(abrule.percentage)
+                                if tmp_target_number < target_number:
+                                    target_number = tmp_target_number
+                                    target_abrule = abrule
 
-                    target_abrule.cnt = target_abrule.cnt + 1
-                    target_abrule.save()
-                    creative = target_abrule.creative
+                            target_abrule.cnt = target_abrule.cnt + 1
+                            target_abrule.save()
+                            creative = target_abrule.creative
                     break
-    if creative:
-        content = eval(creative.content)
-        content["creative"] = creative
-        content["preview"] = preview
 
+    # Если стратегия не отработала, то смотрим, есть ли хоть один креатив для этой страницы
+    if creative is None and active_line_item is not None:
+        creative_id = request.COOKIES.get('creative_id_for_page_%s'%page.url)
+        if creative_id is not None:
+            try:
+                creative = Creative.objects.get(pk=creative_id)
+                # Log: creative id success loaded
+            except Creative.DoesNotExist:
+                pass
+
+    # Загружаем содержимое креатива
+    if creative is not None:
+        content.update(eval(creative.content))
+        content["creative"] = creative
+
+    content["preview"] = preview
+    content["page"] = page
+    # Пока так, потом будем менять в зависимости от лэндинга
+    content["host"] = request.META['HTTP_HOST']
+
+    # Подготавливаем шаблон
     response = render(request, page.template, content)
+
+    # Ставим нужные куки
     if creative and not preview:
         max_age = 365 * 24 * 60 * 60  #one year
         expires = datetime.datetime.strftime(datetime.datetime.utcnow() + datetime.timedelta(seconds=max_age), "%a, %d-%b-%Y %H:%M:%S GMT")
+        # Ставим куку для страницы, на случай если стратегия не отработала
         response.set_cookie('creative_id_for_page_%s'%page.url, creative.id, max_age=max_age, expires=expires, domain=settings.SESSION_COOKIE_DOMAIN, secure=settings.SESSION_COOKIE_SECURE or None)
+        # Ставим куку для конкретной стратегии
+        if active_line_item:
+            response.set_cookie('creative_id_for_page_%s_and_li_%s'%(page.url, active_line_item.id), creative.id, max_age=max_age, expires=expires, domain=settings.SESSION_COOKIE_DOMAIN, secure=settings.SESSION_COOKIE_SECURE or None)
 
     return response
 
