@@ -4,10 +4,10 @@ from __future__ import unicode_literals
 import datetime
 import json
 
-from django.http import HttpResponse, QueryDict
+from django.http import HttpResponse, QueryDict, Http404
 from django.db.models import Q
 from django.shortcuts import render
-from .models import Page, Creative, CreativePart, Segment, LineItem, ABRule
+from .models import Host, Page, CreativeGroup, Creative, CreativePart, Segment, LineItem, ABRule
 from django.conf import settings
 
 def index(request):
@@ -65,20 +65,30 @@ def landing(request, url):
     #    PATH_INFO
     #    QUERY_STRING
     # request.GET.get("w")
+
+    domain = request.META['HTTP_HOST']
+    try:
+        host = Host.objects.get(domain=domain)
+        # Log: page id success loaded
+    except Host.DoesNotExist:
+        raise Http404("Domain does not exist")
+
     preview = request.GET.get('preview', False)
     content = {}
     page = None
     try:
-        page = Page.objects.get(url=url)
+        page = Page.objects.get(url=url, host=host)
         # Log: page id success loaded
     except Page.DoesNotExist:
-        page = Page.objects.filter(purpose="default")
-        if len(page):
-            page = page[0]
-            # Log: default page id success loaded
-        else:
-            page = Page.objects.filter()[0]
-            # Log: other page id success loaded
+        raise Http404("Poll does not exist")
+        # Это выбирает дефолтную страницу для всего. Плохо
+        # page = Page.objects.filter(purpose="default")
+        # if len(page):
+        #     page = page[0]
+        #     # Log: default page id success loaded
+        # else:
+        #     page = Page.objects.filter()[0]
+        #     # Log: other page id success loaded
 
     creative = None
     # creative_id = request.GET.get('creative_id', request.COOKIES.get('creative_id_for_page_%s'%page.url))

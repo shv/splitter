@@ -17,16 +17,10 @@
 
 use strict;
 use warnings;
-# use FindBin;
 use Term::ANSIColor;
 
-use LWP::UserAgent;
-
+# Список допустимых доменов
 my @domains = ("promo.findoil.ru", "elit-stones.ru");
-
-my $replaces = [
-    ['/wp-content/', '/static/elit-stones/'],
-];
 
 my $file = join '', <STDIN>;
 
@@ -83,27 +77,3 @@ exit(0);
 for my $domain (@domains) {
 	$file =~ s/($domain)/find($1)/meg;
 }
-
-
-# sub download_file
-# {
-# 	my $url = shift;
-
-#     my $ua = LWP::UserAgent->new();
-#     $ua->timeout(180);
-#     my $response = $ua->get($url);
-#     if ($response->is_success) {
-# 		my $content = $response->content();
-# 		my @digits = ();
-# 		while ( $content =~ /GeoLiteCity_(\d+)\.zip/gi )
-# 		{
-# 			push @digits, $1;
-# 		}
-# 		@digits = sort {$b <=> $a} @digits;
-# 		return $digits[0];
-#     }
-#     else
-#     {
-#     	die "Error connecting to MaxMind";
-#     }
-# }
