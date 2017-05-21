@@ -2,8 +2,10 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 
 
+@python_2_unicode_compatible
 class Host(models.Model):
     title = models.CharField(max_length=255)
     domain = models.CharField(max_length=255, unique=True)
@@ -15,6 +17,7 @@ class Host(models.Model):
         ordering = ('title',)
 
 
+@python_2_unicode_compatible
 class Page(models.Model):
     title = models.CharField(max_length=255)
     url = models.CharField(max_length=255, blank=True)
@@ -33,6 +36,7 @@ class Page(models.Model):
         unique_together = ('url', 'host',)
 
 
+@python_2_unicode_compatible
 class Creative(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
@@ -48,6 +52,7 @@ class Creative(models.Model):
         ordering = ('title',)
 
 
+@python_2_unicode_compatible
 class CreativePart(models.Model):
     name = models.CharField(max_length=255)
     content = models.TextField()
@@ -65,6 +70,7 @@ class CreativePart(models.Model):
         ordering = ('name',)
 
 
+@python_2_unicode_compatible
 class CreativeGroup(models.Model):
     title = models.CharField(max_length=255)
     pages = models.ManyToManyField(Page, blank=False)
@@ -76,6 +82,7 @@ class CreativeGroup(models.Model):
         ordering = ('title',)
 
 
+@python_2_unicode_compatible
 class Segment(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
@@ -87,6 +94,7 @@ class Segment(models.Model):
         ordering = ('title',)
 
 
+@python_2_unicode_compatible
 class LineItem(models.Model):
     title = models.CharField(max_length=255)
     segment = models.ForeignKey(
@@ -103,6 +111,7 @@ class LineItem(models.Model):
         ordering = ('title',)
 
 
+@python_2_unicode_compatible
 class ABRule(models.Model):
     percentage = models.IntegerField()
     creative = models.ForeignKey(
