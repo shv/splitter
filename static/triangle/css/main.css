@@ -1465,6 +1465,12 @@ Portfolio Details
   padding-top: 100px;
 }
 
+.project-info .alert-info,
+.project-info .alert-success,
+.project-info .alert-warning {
+  padding-bottom: 5px;
+}
+
 .project-name h2{
   margin-top: 0;
   margin-bottom: 15px;

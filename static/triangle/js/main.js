@@ -1,4 +1,8 @@
 jQuery(function($) {'use strict';
+    $('a').click(function(){
+        $(this).attr('href', $(this).attr('href')+"?impression_id="+impression_id);
+        return true;
+    });
 
 	//Responsive Nav
 	$('li.dropdown').find('.fa-angle-down').each(function(){
@@ -70,11 +74,25 @@ jQuery(function($) {'use strict';
 		var form_status = $('<div class="form_status"></div>');
 		$.ajax({
 			url: $(this).attr('action'),
+			method: "POST",
+	        headers: {
+	            "X-CSRFToken": form.find("input[name=csrfmiddlewaretoken]").val()
+	        },
+			data: {
+				CSRF: form.find("input[name=csrfmiddlewaretoken]").val(),
+				phone: form.find("input[name=phone]").val(),
+				offer_id: form.find("input[name=offer_id]").val(),
+				impression_id: form.find("input[name=impression_id]").val(),
+			},
 			beforeSend: function(){
-				form.prepend( form_status.html('<p><i class="fa fa-spinner fa-spin"></i> Email is sending...</p>').fadeIn() );
+				form.prepend( form_status.html('<p><i class="fa fa-spinner fa-spin"></i> Заказ отправляется...</p>').fadeIn() );
 			}
 		}).done(function(data){
-			form_status.html('<p class="text-success">Thank you for contact us. As early as possible  we will contact you</p>').delay(3000).fadeOut();
+			console.log(data);
+			form.replaceWith('<p class="text-success">Спасибо за заказ. номер вашего заказа: ' + data.order_id +
+				'. В самое ближайшее время с вами свяжется наш менеджер и уточнит детали заказа и адрес доставки.'+
+				' А пока желаем вам хорошего дня.</p>');
+			// form.remove();
 		});
 	});
 

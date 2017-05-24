@@ -129,3 +129,18 @@ class ABRule(models.Model):
 
     class Meta:
         ordering = ('percentage',)
+
+
+@python_2_unicode_compatible
+class Order(models.Model):
+    phone = models.CharField(max_length=255)
+    description = models.TextField()
+    session_id = models.CharField(max_length=255, blank=True)
+    status = models.CharField(max_length=255)
+    created = models.DateTimeField(auto_now_add=True, blank=True)
+
+    def __str__(self):
+        return "%s [%s]: %s. %s (%s)" % (self.pk, self.status, self.phone, self.description, self.created)
+
+    class Meta:
+        ordering = ('-created',)

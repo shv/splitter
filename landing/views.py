@@ -1,17 +1,22 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 import datetime
 import json
 import logging
+# import pytelegrambotapi
 import time
+import urllib
+import urllib2
 import uuid
 
-from django.http import HttpResponse, QueryDict, Http404
+
+from django.http import HttpResponse, QueryDict, Http404, HttpResponseRedirect
 from django.db.models import Q
 from django.shortcuts import render
-from .models import Host, Page, CreativeGroup, Creative, CreativePart, Segment, LineItem, ABRule
+from .models import Host, Page, CreativeGroup, Creative, CreativePart, Segment, LineItem, ABRule, Order
 from django.conf import settings
+from jsonview.decorators import json_view
 
 logger = logging.getLogger(__name__)
 statistics_logger = logging.getLogger("statistics")
@@ -53,7 +58,51 @@ def index(request):
 
     return render(request, 'index.html', content)
 
+
+def send_to_telegramm(text):
+    telegramm_url = 'https://api.telegram.org/bot{}/sendMessage'.format(settings.TELEGRAMM_TOKEN)
+    values = { 'chat_id': '284295163','text': text.encode('utf-8')}
+    data = urllib.urlencode(values)
+    req = urllib2.Request(telegramm_url, data)
+    resp = urllib2.urlopen(req)
+    result = resp.read()
+
+
+@json_view
+def create_order(request):
+    if request.method == 'POST':
+        description = "Offer_id: {}".format(request.POST["offer_id"])
+        order = Order.objects.create(phone=request.POST["phone"], description=description, status="new", session_id=request.session.session_key)
+
+        result = {"status": "ok", "offer_id": request.POST["offer_id"], "order_id": order.id}
+
+        send_to_telegramm("Заказ на набор {}! Телефон: {}. Номер заказа: {}".format(request.POST["offer_id"], request.POST["phone"], result["order_id"]))
+
+        ts = time.time()
+        impression_id = request.POST.get('impression_id')
+        preview = request.GET.get('preview', False)
+        statistics = {
+            "action": "create_order",
+            "sessionid": request.session.session_key,
+            "timestamp": ts,
+            "datetime": datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%SZ'),
+            "impression_id": impression_id,
+            "http_referer": request.META.get('HTTP_REFERER'),
+            "preview": preview,
+            "cookies": request.COOKIES,
+            "query_string": request.META['QUERY_STRING'],
+            "offer_id": request.POST["offer_id"],
+            "phone": request.POST["phone"],
+            "order_id": result["order_id"],
+        }
+        statistics_logger.info(statistics)
+
+        return result
+
+
 def landing(request, url):
+    # send_to_telegramm("Пришел новый заказ! Смотри")
+
     # Логика прилипания креатива:
     #   В первый раз пользователю назначается креатив исходя из его сегмента и распределения во AB
     #   При следующем заходе, если пользователь попал в сегмент, то ищется предыдущий креатив в этом сегменте
@@ -72,17 +121,33 @@ def landing(request, url):
     #    QUERY_STRING
     # request.GET.get("w")
 
+    # Пока так прокидываем идентификатор показа
+    # В урл добавляем его скриптом, чтобы не фиксировался и не индексировался
+    impression_id = request.GET.get('impression_id')
+    if impression_id:
+        query_string = request.META['QUERY_STRING']
+        query_string = query_string.replace('impression_id='+impression_id, "").replace("&&", "&")
+        new_url = "{}".format(request.path)
+        if query_string:
+            new_url = new_url + "?" + query_string
+        response = HttpResponseRedirect(new_url) # replace redirect with HttpResponse or render
+        response.set_cookie('impression_id', impression_id, max_age=30)
+        return response
+
+    # Уникальный идентификатор показа. Записывается только в лог и прокидывается во все события дальше
+    impression_id = request.COOKIES.get('impression_id', str(uuid.uuid4()))
+
+
     # У каждого пользователя должна быть сесссия. По ней буем дальше трэкать стату
     if not request.session.session_key:
         request.session.create()
 
-    # Уникальный идентификатор показа. Записывается только в лог и прокидывается во все события дальше
-    impression_id = str(uuid.uuid4())
 
     ts = time.time()
     # Сюда складывается вся инфа для статистики
     content = {}
     statistics = {
+        "action": "landing",
         "sessionid": request.session.session_key,
         "timestamp": ts,
         "datetime": datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%SZ'),
@@ -180,6 +245,10 @@ def landing(request, url):
                 statistics["creative_from_cookies_page"] = creative.id
             except Creative.DoesNotExist:
                 pass
+
+    orders = Order.objects.filter(status="new", session_id=request.session.session_key).all()
+    if len(orders):
+        content["has_orders"] = True
 
     # Загружаем содержимое креатива
     if creative is not None:

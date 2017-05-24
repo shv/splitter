@@ -5,34 +5,44 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    <img src="{% static "triangle/images/hamster/1-hc-612_enl.jpg" %}" class="img-responsive" alt="">
+                    <img src="{% static "triangle/images/hamster/2-ferplast-ombi-01.jpg" %}" class="img-responsive" alt="">
                 </div>
                 <div class="col-sm-6">
                     <div class="project-name overflow">
                         <h2 class="bold">Джунгарский хомячок</h2>
                     </div>
                     <div class="project-info overflow">
-                        <p>Доставка по Москве бесплатно.</p>
+                        <div class="alert alert-success fade in">
+                            <h4><center>Доставка по Москве бесплатно</center></h4>
+                        </div>
+                        {% if has_orders %}
+                        <div class="alert alert-warning fade in">
+                            <h4><center>Вы уже сделали заказ. Если хотите что-нибудь добавить, вы сможете это сделать, дождавшись звонка менеджера.</center></h4>
+                        </div>
+                        {% endif %}
+                        <p>Для заказа укажите номер вашего телефона, мы с вами свяжемся в ближайшее время.</p>
+                        <form id="main-contact-form" name="contact-form" method="post" action="/create-order">{% csrf_token %}
+                            <input type="hidden" name="offer_id" value="2">
+                            <input type="hidden" name="impression_id" value="{{ statistics.impression_id }}">
+                            <div class="form-group">
+                                <input type="phone" name="phone" class="form-control" required="required" placeholder="Номер телефона">
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" name="submit" class="btn btn-submit" value="Заказать за 3990 рублей">
+                            </div>
+                        </form>
+
                         <p>Мы не просто продаем Вам хомяка или клетку. Мы Вам привезем все, что необходимо для нормальной жизни питомца. А именно:
                         </p>
                         <ul class="elements">
                             <li><i class="fa fa-angle-right"></i> Главного героя – джунгарского хомячка.</li>
-                            <li><i class="fa fa-angle-right"></i> Клетку - скромный дом для постоянного обитания питомца.</li>
+                            <li><i class="fa fa-angle-right"></i> Просторную клетку для постоянного обитания питомца.</li>
                             <li><i class="fa fa-angle-right"></i> Небольшую упаковку корма, которой хватит на 2-3 месяца.</li>
                             <li><i class="fa fa-angle-right"></i> Упаковку древесного наполнителя.</li>
                             <li><i class="fa fa-angle-right"></i> Подробную инструкцию по уходу за хомячком.</li>
                             <li><i class="fa fa-angle-right"></i> Море положительных эмоций всех, кто его увидит.</li>
                         </ul>
-                        <p>Цена комплекта всего 2190 рублей, включая доставку</p>
-						<p>Для заказа укажите ваш телефон, мы с вами свяжемся в ближайшее время.</p>
-                        <form id="main-contact-form" name="contact-form" method="post" action="sendemail.php">
-                            <div class="form-group">
-                                <input type="phone" name="phone" class="form-control" required="required" placeholder="Номер телефона">
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" name="submit" class="btn btn-submit" value="Заказать">
-                            </div>
-                        </form>
+                        <p>Цена комплекта всего <strong>3990</strong> рублей, включая доставку.</p>
                     </div>
                 </div>
             </div>
@@ -65,11 +75,11 @@
                     <div class="portfolio-wrapper">
                         <div class="portfolio-single">
                             <div class="portfolio-thumb">
-                                <img src="{% static "triangle/images/hamster/1-hc-612_enl.jpg" %}" class="img-responsive" alt="">
+                                <img src="{% static "triangle/images/hamster/2-ferplast-ombi-01.jpg" %}" class="img-responsive" alt="">
                             </div>
                             <div class="portfolio-view">
                                 <ul class="nav nav-pills">
-                                    <li><a href="{% static "triangle/images/hamster/1-hc-612_enl.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                    <li><a href="{% static "triangle/images/hamster/2-ferplast-ombi-01.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
                                 </ul>
                             </div>
                         </div>
