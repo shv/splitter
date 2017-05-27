@@ -95,7 +95,7 @@ def create_order(request):
             "phone": request.POST["phone"],
             "order_id": result["order_id"],
         }
-        statistics_logger.info(statistics)
+        statistics_logger.info(json.dumps(statistics))
 
         return result
 
@@ -277,7 +277,7 @@ def landing(request, url):
 
     # log
     # creative
-    statistics_logger.info(statistics)
+    statistics_logger.info(json.dumps(statistics))
 
     return response
 
