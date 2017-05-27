@@ -89,9 +89,12 @@ jQuery(function($) {'use strict';
 			}
 		}).done(function(data){
 			console.log(data);
-			form.replaceWith('<p class="text-success">Спасибо за заказ. номер вашего заказа: ' + data.order_id +
-				'. В самое ближайшее время с вами свяжется наш менеджер и уточнит детали заказа и адрес доставки.'+
-				' А пока желаем вам хорошего дня.</p>');
+			form.replaceWith('<div class="alert alert-success fade in">'+
+                             '<h4><center>Спасибо за заказ.</center></h4>'+
+							 '<p>Номер вашего заказа: <strong>' + data.order_id +
+							 '</strong>.<br />В самое ближайшее время с вами свяжется наш менеджер и уточнит детали заказа и адрес доставки.<br />'+
+							 ' А пока желаем вам хорошего дня.</p>'+
+							 '</div>');
 			// form.remove();
 		});
 	});

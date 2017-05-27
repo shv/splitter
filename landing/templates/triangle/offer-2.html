@@ -12,23 +12,20 @@
                         <h2 class="bold">Джунгарский хомячок</h2>
                     </div>
                     <div class="project-info overflow">
-                        <div class="alert alert-success fade in">
-                            <h4><center>Доставка по Москве бесплатно</center></h4>
-                        </div>
                         {% if has_orders %}
                         <div class="alert alert-warning fade in">
                             <h4><center>Вы уже сделали заказ. Если хотите что-нибудь добавить, вы сможете это сделать, дождавшись звонка менеджера.</center></h4>
                         </div>
                         {% endif %}
-                        <p>Для заказа укажите номер вашего телефона, мы с вами свяжемся в ближайшее время.</p>
                         <form id="main-contact-form" name="contact-form" method="post" action="/create-order">{% csrf_token %}
-                            <input type="hidden" name="offer_id" value="2">
+                            <p>Для заказа укажите номер вашего телефона, мы с вами свяжемся в ближайшее время.</p>
+                            <input type="hidden" name="offer_id" value="1">
                             <input type="hidden" name="impression_id" value="{{ statistics.impression_id }}">
                             <div class="form-group">
-                                <input type="phone" name="phone" class="form-control" required="required" placeholder="Номер телефона">
+                                <input type="phone" name="phone" class="form-control" required="required" placeholder="Номер телефона" style="border-color: #f0ad4e;">
                             </div>
-                            <div class="form-group">
-                                <input type="submit" name="submit" class="btn btn-submit" value="Заказать за 3990 рублей">
+                            <div class="form-group" style="text-align: center">
+                                <input type="submit" name="submit" class="btn btn-lg btn-warning" value="Заказать за 2250 рублей">
                             </div>
                         </form>
 
@@ -42,7 +39,7 @@
                             <li><i class="fa fa-angle-right"></i> Подробную инструкцию по уходу за хомячком.</li>
                             <li><i class="fa fa-angle-right"></i> Море положительных эмоций всех, кто его увидит.</li>
                         </ul>
-                        <p>Цена комплекта всего <strong>3990</strong> рублей, включая доставку.</p>
+                        <p>Цена комплекта всего <strong>3990</strong> рублей, <strong>включая доставку</strong>.</p>
                     </div>
                 </div>
             </div>
