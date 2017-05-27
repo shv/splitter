@@ -252,7 +252,7 @@ def landing(request, url):
 
     # Загружаем содержимое креатива
     if creative is not None:
-        content.update(eval(creative.content))
+        content["smart"] = eval(creative.content)
         content["creative"] = creative
         statistics["creative"] = creative.id
 

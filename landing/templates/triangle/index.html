@@ -2,25 +2,31 @@
 {% load static %}
 {% block content %}
     <section id="home-slider">
-        <div class="container">
+        <div class="container animate-in">
             <div class="row">
-                <div class="main-slider">
-                    <div class="slide-text">
-                        <h1>We Are Creative Nerds</h1>
-                        <p>Boudin doner frankfurter pig. Cow shank bresaola pork loin tri-tip tongue venison pork belly meatloaf short loin landjaeger biltong beef ribs shankle chicken andouille.</p>
-                        <a href="#" class="btn btn-common hover-bg">SIGN UP</a>
+                <div class="col-sm-5">
+                    <h1>{% if smart.slider_title %}{{ smart.slider_title|safe }}{% else %}Подарите себе или любимым милого хомячка{%endif%}</h1>
+                    <p><strong>Джунгарский хомячок</strong> – очень милое и интересное создание. Таких хомячков <strong>любят почти все</strong>! Ведь он маленький, пушистый и с ним можно играть.</p>
+                    <p>Хомячок может быть прекрасным подарком как <strong>любимой девушке</strong>, так и ребенку, бабушке, маме, подруге и даже парню. Хотя с парнем, я бы не рисковал...</p>
+                    <p>Хомячки живут в клетке. Поэтому они не портят мебель как собачки или кошечки и не гадят где попало. Их не нужно выгуливать. Хомячков невозможно перекормить как рыбок.</p>
+                    <p>Весь набор положителных эмоций вам обойдется <strong>совсем недорого</strong>. Дешевле велосипеда, собачки или даже кошечки.</p>
+                    <p><strong>Джунгарские хомячки</strong> в приличных магазинах стоят не дороже 200 рублей. А где жить хомячку? Что кушать? Вот весь набор <strong>с доставкой</strong> к Вам домой (либо адресату подарка) обойдется всего от 2250 рублей.</p>
+                </div>
+                <div class="col-sm-7">
+                    <div style="height:450px;position:relative">
+                        <img src="{% static "triangle/images/hamster/Hamster2.jpg" %}" class="slider-hill" alt="slider image" width="500">
+                        <img src="{% static "triangle/images/home/slider/house.png" %}" class="slider-house" alt="slider image">
+                        <img src="{% static "triangle/images/home/slider/sun.png" %}" class="slider-sun" alt="slider image">
+                        <img src="{% static "triangle/images/home/slider/birds1.png" %}" class="slider-birds1" alt="slider image">
+                        <img src="{% static "triangle/images/home/slider/birds2.png" %}" class="slider-birds2" alt="slider image">
                     </div>
-                    <img src="{% static "triangle/images/home/slider/hill.png" %}" class="slider-hill" alt="slider image">
-                    <img src="{% static "triangle/images/home/slider/house.png" %}" class="slider-house" alt="slider image">
-                    <img src="{% static "triangle/images/home/slider/sun.png" %}" class="slider-sun" alt="slider image">
-                    <img src="{% static "triangle/images/home/slider/birds1.png" %}" class="slider-birds1" alt="slider image">
-                    <img src="{% static "triangle/images/home/slider/birds2.png" %}" class="slider-birds2" alt="slider image">
                 </div>
             </div>
         </div>
         <div class="preloader"><i class="fa fa-sun-o fa-spin"></i></div>
     </section>
     <!--/#home-slider-->
+    <section style="height:50px"></section>
 
     <section id="services">
         <div class="container">
@@ -30,11 +36,11 @@
                         <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="300ms">
                             <div class="portfolio-single">
                                 <div class="portfolio-thumb">
-                                    <img src="{% static "triangle/images/hamster/1-hc-612_enl.jpg" %}" class="img-responsive offer" alt="">
+                                    <img src="{% static "triangle/images/hamster/1-kredo-mini.jpg" %}" class="img-responsive offer" alt="">
                                 </div>
                                 <div class="portfolio-view">
                                     <ul class="nav nav-pills">
-                                        <li><a href="{% static "triangle/images/hamster/1-hc-612_enl.jpg" %}" data-lightbox="orders-set"><i class="fa fa-eye"></i></a></li>
+                                        <li><a href="{% static "triangle/images/hamster/1-kredo-mini.jpg" %}" data-lightbox="orders-set"><i class="fa fa-eye"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -87,7 +93,7 @@
                             <div class="single-price price-one">
                                 <div class="table-heading">
                                     <p class="plan-name">Скромно</p>
-                                    <p class="plan-price"><span class="price">2190</span><span class="month">руб</span></p>
+                                    <p class="plan-price"><span class="price">2250</span><span class="month">руб</span></p>
                                 </div>
                                 <ul>                            
                                     <li>Джунгарский хомячок <span><i class="fa fa-check"></i></span></li>
@@ -195,5 +201,141 @@
         </div>
     </section>
      <!--/#features-->
+
+    <section id="related-work" class="padding-top padding-bottom">
+        <div class="container">
+            <div class="row">
+                <h1 class="title text-center">Посмотрите, какие они милые!</h1>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "triangle/images/hamster/Hamster1.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "triangle/images/hamster/Hamster1.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "triangle/images/hamster/1-kredo-mini.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "triangle/images/hamster/1-kredo-mini.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "triangle/images/hamster/food1.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "triangle/images/hamster/food1.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "triangle/images/hamster/floor1.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "triangle/images/hamster/floor1.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "triangle/images/hamster/Hamster1.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "triangle/images/hamster/Hamster1.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "triangle/images/hamster/1-kredo-mini.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "triangle/images/hamster/1-kredo-mini.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "triangle/images/hamster/food1.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "triangle/images/hamster/food1.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "triangle/images/hamster/floor1.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "triangle/images/hamster/floor1.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 {% endblock %}
