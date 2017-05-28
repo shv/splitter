@@ -9,8 +9,8 @@
                     <p><strong>Джунгарский хомячок</strong> – очень милое и интересное создание. Таких хомячков <strong>любят почти все</strong>! Ведь он маленький, пушистый и с ним можно играть.</p>
                     <p>Хомячок может быть прекрасным подарком как <strong>любимой девушке</strong>, так и ребенку, бабушке, маме, подруге и даже парню. Хотя с парнем, я бы не рисковал...</p>
                     <p>Хомячки живут в клетке. Поэтому они не портят мебель как собачки или кошечки и не гадят где попало. Их не нужно выгуливать. Хомячков невозможно перекормить как рыбок.</p>
-                    <p>Весь набор положителных эмоций вам обойдется <strong>совсем недорого</strong>. Дешевле велосипеда, собачки или даже кошечки.</p>
-                    <p><strong>Джунгарские хомячки</strong> в приличных магазинах стоят не дороже 200 рублей. А где жить хомячку? Что кушать? Вот весь набор <strong>с доставкой</strong> к Вам домой (либо адресату подарка) обойдется всего от 2250 рублей.</p>
+                    <p><strong>Джунгарские хомячки</strong> в приличных магазинах стоят не дороже 200 рублей.</p>
+                    <p>Весь набор положителных эмоций <strong>с доставкой</strong> вам обойдется <strong>совсем недорого</strong> – всего от 2250 рублей. Дешевле велосипеда, собачки или даже кошечки.</p>
                 </div>
                 <div class="col-sm-7">
                     <div style="height:450px;position:relative">
@@ -45,7 +45,7 @@
                                 </div>
                             </div>
                         </div>
-                        <h2>Небольшая комнатка</h2>
+                        <h2>{% if smart.services_1_title %}{{ smart.services_1_title|safe }}{% else %}Скромная квартирка{%endif%}</h2>
                         <p>Скромная, но многоуровневая квартирка со всем необходимым.</p>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                                 </div>
                             </div>
                         </div>
-                        <h2>Просторное жилье</h2>
+                        <h2>{% if smart.services_2_title %}{{ smart.services_2_title|safe }}{% else %}Однокомнатные апартаменты{%endif%}</h2>
                         <p>Полноценное жилье, в которм есть все необходимое для комфортной жизни, даже тоннель. Очень напоминает квартиру-студию.
                         Домик сделан в Италии.</p>
                     </div>
@@ -82,7 +82,7 @@
                                 </div>
                             </div>
                         </div>
-                        <h2>Апартаменты со спортзалом</h2>
+                        <h2>{% if smart.services_3_title %}{{ smart.services_3_title|safe }}{% else %}Апартаменты со спортзалом{%endif%}</h2>
                         <p>Нескромные апартаменты для вашего хомячка. В этой простойрной уютной квартирке вашему питомцу будет очень комфортно.
                         Домик сделан в Италии.</p>
                     </div>
@@ -92,7 +92,7 @@
                         <div class="col-sm-6 col-md-4">
                             <div class="single-price price-one">
                                 <div class="table-heading">
-                                    <p class="plan-name">Скромно</p>
+                                    <p class="plan-name">{% if smart.prices_1_title %}{{ smart.prices_1_title|safe }}{% else %}Скромно{% endif %}</p>
                                     <p class="plan-price"><span class="price">2250</span><span class="month">руб</span></p>
                                 </div>
                                 <ul>                            
@@ -103,13 +103,13 @@
                                     <li>Подробные инструкции по уходу <span><i class="fa fa-check"></i></span></li>
                                     <li>Море положительных эмоций <span><i class="fa fa-check"></i></span></li>
                                 </ul>
-                                <a href="/offer-1.html" class="btn btn-buynow">Купить</a>
+                                <a href="/offer-1.html" class="btn btn-buynow" data-referer-button="1">Купить</a>
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-4">
                             <div class="single-price price-two">
                                 <div class="table-heading">
-                                    <p class="plan-name">Средний класс</p>
+                                    <p class="plan-name">{% if smart.prices_2_title %}{{ smart.prices_2_title|safe }}{% else %}Средний класс{% endif %}</p>
                                     <p class="plan-price"><span class="price">3990</span><span class="month">руб</span></p>
                                 </div>                        
                                 <ul>
@@ -120,13 +120,13 @@
                                     <li>Подробные инструкции по уходу <span><i class="fa fa-check"></i></span></li>
                                     <li>Море положительных эмоций <span><i class="fa fa-check"></i></span></li>
                                 </ul>
-                                <a href="/offer-2.html" class="btn btn-buynow btn-hightlight">Купить</a>
+                                <a href="/offer-2.html" class="btn btn-buynow btn-hightlight" data-referer-button="2">Купить</a>
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-4">
                             <div class="single-price price-three">
                                 <div class="table-heading">
-                                    <p class="plan-name">Олигарх</p>
+                                    <p class="plan-name">{% if smart.prices_3_title %}{{ smart.prices_3_title|safe }}{% else %}Олигарх{% endif %}</p>
                                     <p class="plan-price"><span class="price">4950</span><span class="month">руб</span></p>
                                 </div>
                                 <ul>
@@ -137,7 +137,7 @@
                                     <li>Подробные инструкции по уходу <span><i class="fa fa-check"></i></span></li>
                                     <li>Море положительных эмоций <span><i class="fa fa-check"></i></span></li>
                                 </ul>
-                                <a href="/offer-3.html" class="btn btn-buynow">Купить</a>
+                                <a href="/offer-3.html" class="btn btn-buynow" data-referer-button="3">Купить</a>
                             </div>
                         </div>
                     </div>
@@ -172,29 +172,40 @@
             <div class="row">
                 <div class="single-features">
                     <div class="col-sm-5 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
-                        <img src="{% static "triangle/images/home/image1.png" %}" class="img-responsive" alt="">
+                        <img src="{% static "triangle/images/hamster/1-kredo-mini-all.jpg" %}" class="img-responsive" alt="">
                     </div>
                     <div class="col-sm-6 wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
-                        <h2>Experienced and Enthusiastic</h2>
-                        <P>Pork belly leberkas cow short ribs capicola pork loin. Doner fatback frankfurter jerky meatball pastrami bacon tail sausage. Turkey fatback ball tip, tri-tip tenderloin drumstick salami strip steak.</P>
+                        <h2>Скромная квартирка</h2>
+                        <P>Размер клетки 35,5х26,6х27,5см. Жилье скромное, но уютное. Здесь есть все необходимое для проживания вашего хомячка: домик, площадка второго этажа, кормушка, автопоилка, винтовой спуск, небольшое колесо.</P>
+                        <ul class="elements">
+                            <li><i class="fa fa-angle-right"></i>Прутья клетки не гнутся, не облупляются и не гремят</li>
+                            <li><i class="fa fa-angle-right"></i>Пластиковый поддон легко очищается</li>
+                            <li><i class="fa fa-angle-right"></i>Ручка на крыше клетки удобна для перемещения в случае необходимости</li>
+                        </ul>
+                        <a href="/offer-1.html" class="btn btn-common" data-referer-button="4">Купить этот набор</a>
                     </div>
                 </div>
                 <div class="single-features">
                     <div class="col-sm-6 col-sm-offset-1 align-right wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
-                        <h2>Built for the Responsive Web</h2>
-                        <P>Mollit eiusmod id chuck turducken laboris meatloaf pork loin tenderloin swine. Pancetta excepteur fugiat strip steak tri-tip. Swine salami eiusmod sint, ex id venison non. Fugiat ea jowl cillum meatloaf.</P>
+                        <h2>Однокомнатные апартаменты среднего класса</h2>
+                        <P>Эта итальянская клетка размером 40,5*29,5*22,5см будет не только комфортным местом обитания, но и не создаст трудностей в обсуживании. Здесь Ваш хомячок будет чувствовать себя в безопасности и всегда сможет спрятаться в домике. Большое колесо поможет постоянно поддерживать хорошую физическую форму.</P>
+                        <P>В конструкции клетки предусмотрена возможность досбавления комнат и туннелей.</P>
+                        <a href="/offer-2.html" class="btn btn-common" data-referer-button="5">Купить этот набор</a>
                     </div>
                     <div class="col-sm-5 wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
-                        <img src="{% static "triangle/images/home/image2.png" %}" class="img-responsive" alt="">
+                        <img src="{% static "triangle/images/hamster/2-ferplast-ombi-01-all2.jpg" %}" class="img-responsive" alt="">
                     </div>
                 </div>
                 <div class="single-features">
                     <div class="col-sm-5 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
-                        <img src="{% static "triangle/images/home/image3.png" %}" class="img-responsive" alt="">
+                        <img src="{% static "triangle/images/hamster/3-ferplast-combi-2.2-all.jpg" %}" class="img-responsive" alt="">
                     </div>
                     <div class="col-sm-6 wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
-                        <h2>Experienced and Enthusiastic</h2>
-                        <P>Ut officia cupidatat anim excepteur fugiat cillum ea occaecat rump pork chop tempor. Ut tenderloin veniam commodo. Shankle aliquip short ribs, chicken eiusmod exercitation shank landjaeger spare ribs corned beef.</P>
+                        <h2>Апартаменты со спортзалом</h2>
+                        <P>Клетка состоит из однокомнатных апартаментов и спортзала, присоединенного с помощью небольшого тоннеля. В данной конфигурации колесо находится в отдельной комнате и не мещает повседневной жизни Вашего питомца.</P>
+                        <P>И как только стемнеет, хомячок просыпается и бежит в спортзал через тоннель, напоминающий ему норку. В спортзале так же есть небольшой домик, где Ваш хомячок будет очень отдыхать от длительных пробежек.</P>
+                        <P>В конструкции клетки предусмотрена возможность досбавления комнат и туннелей.</P>
+                        <a href="/offer-3.html" class="btn btn-common" data-referer-button="6">Купить этот набор</a>
                     </div>
                 </div>
             </div>

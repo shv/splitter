@@ -1,8 +1,15 @@
 jQuery(function($) {'use strict';
-    $('a').click(function(){
-        $(this).attr('href', $(this).attr('href')+"?impression_id="+impression_id);
-        return true;
-    });
+	$('a[data-referer-button]').click(function(){
+		var referer_button = $(this).attr('data-referer-button'),
+			args = "?impression_id="+impression_id;
+			if (referer_button) {
+				args = args+"&referer_button="+referer_button;
+			};
+
+		// alert(referer_button);
+		$(this).attr('href', $(this).attr('href')+args);
+		return true;
+	});
 
 	//Responsive Nav
 	$('li.dropdown').find('.fa-angle-down').each(function(){

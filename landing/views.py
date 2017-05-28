@@ -5,6 +5,7 @@ import datetime
 import json
 import logging
 # import pytelegrambotapi
+import re
 import time
 import urllib
 import urllib2
@@ -16,47 +17,11 @@ from django.db.models import Q
 from django.shortcuts import render
 from .models import Host, Page, CreativeGroup, Creative, CreativePart, Segment, LineItem, ABRule, Order
 from django.conf import settings
+from django.views.decorators.cache import never_cache
 from jsonview.decorators import json_view
 
 logger = logging.getLogger(__name__)
 statistics_logger = logging.getLogger("statistics")
-
-def index(request):
-    # creative = get_object_or_404(Question, pk=question_id)
-
-    # request.COOKIES
-    # request.META
-    #    HTTP_REFERER
-    #    HTTP_COOKIE
-    #    TERM_SESSION_ID
-    #    HTTP_HOST
-    #    PATH_INFO
-    #    QUERY_STRING
-    # request.GET.get("w")
-    content = {}
-    line_items = LineItem.objects.order_by('priority').all()
-    for line_item in line_items:
-        segment = line_item.segment
-        rule = segment.content
-        res = eval(rule)
-        if res:
-            query = QueryDict(request.META['QUERY_STRING'])
-            abrules = ABRule.objects.filter(line_item=line_item.id).all()
-            target_abrule = abrules[0]
-            target_number = target_abrule.cnt / float(target_abrule.percentage)
-            for abrule in abrules:
-                tmp_target_number = abrule.cnt / float(abrule.percentage)
-                if tmp_target_number < target_number:
-                    target_number = tmp_target_number
-                    target_abrule = abrule
-
-            target_abrule.cnt = target_abrule.cnt + 1
-            target_abrule.save()
-            creative = target_abrule.creative
-            content = eval(creative.content)
-
-
-    return render(request, 'index.html', content)
 
 
 def send_to_telegramm(text):
@@ -68,6 +33,7 @@ def send_to_telegramm(text):
     result = resp.read()
 
 
+@never_cache
 @json_view
 def create_order(request):
     if request.method == 'POST':
@@ -100,6 +66,7 @@ def create_order(request):
         return result
 
 
+@never_cache
 def landing(request, url):
     # send_to_telegramm("Пришел новый заказ! Смотри")
 
@@ -127,15 +94,23 @@ def landing(request, url):
     if impression_id:
         query_string = request.META['QUERY_STRING']
         query_string = query_string.replace('impression_id='+impression_id, "").replace("&&", "&")
+        # Пока что предполагаем, что идентификато ссылающейся кнопки может быть только при наличии impression_id
+        referer_button = request.GET.get('referer_button')
+        referer_button_val = referer_button if referer_button else ''
+        query_string = query_string.replace('referer_button='+referer_button_val, "").replace("&&", "&")
+        query_string = re.sub(r"^&$", "", query_string)
         new_url = "{}".format(request.path)
         if query_string:
             new_url = new_url + "?" + query_string
         response = HttpResponseRedirect(new_url) # replace redirect with HttpResponse or render
         response.set_cookie('impression_id', impression_id, max_age=30)
+        response.set_cookie('referer_button', referer_button_val, max_age=10 if referer_button else 0)
         return response
 
     # Уникальный идентификатор показа. Записывается только в лог и прокидывается во все события дальше
     impression_id = request.COOKIES.get('impression_id', str(uuid.uuid4()))
+    # Имя ссылающейся кнопки для разделения статистики кликов. Сначала из кук, потом из строки запроса
+    referer_button = request.COOKIES.get('referer_button', request.GET.get('referer_button'))
 
 
     # У каждого пользователя должна быть сесссия. По ней буем дальше трэкать стату
@@ -157,6 +132,7 @@ def landing(request, url):
         "http_x_real_ip": request.META.get('HTTP_X_REAL_IP'),
         "http_x_forwarded_for": request.META.get('HTTP_X_FORWARDED_FOR'),
         "http_referer": request.META.get('HTTP_REFERER'),
+        "referer_button": referer_button,
     }
     logger.debug("---META: {}".format(request.META))
 
@@ -282,6 +258,7 @@ def landing(request, url):
     return response
 
 
+@never_cache
 def generate(request):
     creative_groups = CreativeGroup.objects.all()
     for creative_group in creative_groups:

@@ -52,15 +52,15 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a class="navbar-brand" href="/">
+                    <a class="navbar-brand" href="/" data-referer-button="logo">
                     	<h1><img src="{% static "triangle/images/logo.png" %}" alt="logo"></h1>
                     </a>
                     
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="{%if page.url == ''%}active{%endif%}"><a href="/">Джунгарсие хомячки</a></li>
-                        <li class="{%if page.url == 'about.html'%}active{%endif%}"><a href="/about.html">Описание и уход</a>
+                        <li class="{%if page.url == ''%}active{%endif%}"><a href="/" data-referer-button="menu-main">Джунгарсие хомячки</a></li>
+                        <li class="{%if page.url == 'about.html'%}active{%endif%}"><a href="/about.html" data-referer-button="menu-about">Описание и уход</a>
                     </ul>
                 </div>
             </div>
