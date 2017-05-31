@@ -89,6 +89,7 @@ jQuery(function($) {'use strict';
 				CSRF: form.find("input[name=csrfmiddlewaretoken]").val(),
 				phone: form.find("input[name=phone]").val(),
 				offer_id: form.find("input[name=offer_id]").val(),
+				page_id: form.find("input[name=page_id]").val(),
 				impression_id: form.find("input[name=impression_id]").val(),
 			},
 			beforeSend: function(){
