@@ -9,6 +9,8 @@ from django.utils.encoding import python_2_unicode_compatible
 class Host(models.Model):
     title = models.CharField(max_length=255)
     domain = models.CharField(max_length=255, unique=True)
+    telegramm_token = models.CharField(max_length=255, blank=True)
+    telegramm_chat_id = models.CharField(max_length=255, blank=True)
 
     def __str__(self):
         return "%s" % (self.domain)
@@ -138,6 +140,20 @@ class Order(models.Model):
     session_id = models.CharField(max_length=255, blank=True)
     status = models.CharField(max_length=255)
     created = models.DateTimeField(auto_now_add=True, blank=True)
+    host = models.ForeignKey(
+        'Host',
+        on_delete=models.SET_NULL,
+        blank=True,
+        default=None,
+        null=True
+    )
+    page = models.ForeignKey(
+        'Page',
+        on_delete=models.SET_NULL,
+        blank=True,
+        default=None,
+        null=True
+    )
 
     def __str__(self):
         return "%s [%s]: %s. %s (%s)" % (self.pk, self.status, self.phone, self.description, self.created)

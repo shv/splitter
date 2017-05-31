@@ -20,6 +20,7 @@
                         <form id="main-contact-form" name="contact-form" method="post" action="/create-order">{% csrf_token %}
                             <p>Для заказа укажите номер вашего телефона, мы с вами свяжемся в ближайшее время.</p>
                             <input type="hidden" name="offer_id" value="1">
+                            <input type="hidden" name="page_id" value="{% page.id %}">
                             <input type="hidden" name="impression_id" value="{{ statistics.impression_id }}">
                             <div class="form-group">
                                 <input type="phone" name="phone" class="form-control" required="required" placeholder="Номер телефона" style="border-color: #f0ad4e;" data-mask="+7(000)000-00-00" data-mask-selectonfocus="true">

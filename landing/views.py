@@ -24,30 +24,48 @@ logger = logging.getLogger(__name__)
 statistics_logger = logging.getLogger("statistics")
 
 
-def send_to_telegramm(text):
-    telegramm_url = 'https://api.telegram.org/bot{}/sendMessage'.format(settings.TELEGRAMM_TOKEN)
-    values = { 'chat_id': '284295163','text': text.encode('utf-8')}
-    data = urllib.urlencode(values)
-    req = urllib2.Request(telegramm_url, data)
-    resp = urllib2.urlopen(req)
-    result = resp.read()
+def send_to_telegramm(text, telegramm_token=None, telegramm_chat_id=None):
+    if telegramm_token and telegramm_chat_id:
+        telegramm_url = 'https://api.telegram.org/bot{}/sendMessage'.format(telegramm_token)
+        values = { 'chat_id': telegramm_chat_id,'text': text.encode('utf-8')}
+        data = urllib.urlencode(values)
+        req = urllib2.Request(telegramm_url, data)
+        resp = urllib2.urlopen(req)
+        result = resp.read()
+        logger.debug("Message sent to telegramm")
 
 
 @never_cache
 @json_view
 def create_order(request):
     if request.method == 'POST':
+        try:
+            host = Host.objects.get(domain=request.META['HTTP_HOST'])
+        except Host.DoesNotExist:
+            raise Http404("Domain does not exist")
+
         description = "Offer_id: {}".format(request.POST["offer_id"])
-        order = Order.objects.create(phone=request.POST["phone"], description=description, status="new", session_id=request.session.session_key)
+        order = Order.objects.create(
+            phone=request.POST.get("phone"),
+            description=description,
+            status="new",
+            session_id=request.session.session_key,
+            host_id=host.id,
+            page_id=request.POST.get("page_id")
+        )
 
         result = {"status": "ok", "offer_id": request.POST["offer_id"], "order_id": order.id}
-
-        send_to_telegramm("Заказ на набор {}! Телефон: {}. Номер заказа: {}".format(request.POST["offer_id"], request.POST["phone"], result["order_id"]))
+        if host.telegramm_token and host.telegramm_chat_id:
+            send_to_telegramm("Заказ на набор {}! Телефон: {}. Номер заказа: {}. Сайт: {}".format(request.POST["offer_id"], request.POST["phone"], result["order_id"], host.domain),
+                telegramm_token=host.telegramm_token,
+                telegramm_chat_id=host.telegramm_chat_id
+            )
 
         ts = time.time()
         impression_id = request.POST.get('impression_id')
         preview = request.GET.get('preview', False)
         statistics = {
+            "host": host.id,
             "action": "create_order",
             "sessionid": request.session.session_key,
             "timestamp": ts,
