@@ -79,6 +79,38 @@
     <script type="text/javascript" src="{% static "triangle/js/lightbox.min.js" %}"></script>
     <script type="text/javascript" src="{% static "triangle/js/jquery.mask.js" %}"></script>
     <script type="text/javascript" src="{% static "triangle/js/wow.min.js" %}"></script>
-    <script type="text/javascript" src="{% static "triangle/js/main.js" %}"></script>   
+    <script type="text/javascript" src="{% static "triangle/js/main.js" %}"></script>
+    {% if not preview %}
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function() {
+                try {
+                    w.yaCounterMain = new Ya.Metrika({
+                        id:{% if host.domain == 'hamsterhouse.ru' %}44839840{% else %}44839867{% endif %},
+                        clickmap:true,
+                        trackLinks:true,
+                        accurateTrackBounce:true,
+                        webvisor:true,
+                        ecommerce:"dataLayer"
+                    });
+                } catch(e) { }
+            });
+
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else { f(); }
+        })(document, window, "yandex_metrika_callbacks");
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/{% if host.domain == 'hamsterhouse.ru' %}44839840{% else %}44839867{% endif %}" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    {% endif %} 
 </body>
 </html>
