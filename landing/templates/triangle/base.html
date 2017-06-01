@@ -87,7 +87,7 @@
             (w[c] = w[c] || []).push(function() {
                 try {
                     w.yaCounterMain = new Ya.Metrika({
-                        id:{% if host.domain == 'hamsterhouse.ru' %}44839840{% else %}44839867{% endif %},
+                        id:{% if host == 'hamsterhouse.ru' %}44839840{% else %}44839867{% endif %},
                         clickmap:true,
                         trackLinks:true,
                         accurateTrackBounce:true,
@@ -109,7 +109,7 @@
             } else { f(); }
         })(document, window, "yandex_metrika_callbacks");
     </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/{% if host.domain == 'hamsterhouse.ru' %}44839840{% else %}44839867{% endif %}" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <noscript><div><img src="https://mc.yandex.ru/watch/{% if host == 'hamsterhouse.ru' %}44839840{% else %}44839867{% endif %}" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
     {% endif %} 
 </body>
