@@ -20,7 +20,7 @@
                         {% endif %}
                         <form id="main-contact-form" name="contact-form" method="post" action="/create-order">{% csrf_token %}
                             <p>Для заказа укажите номер вашего телефона, мы с вами свяжемся в ближайшее время.</p>
-                            <input type="hidden" name="offer_id" value="1">
+                            <input type="hidden" name="offer_id" value="2">
                             <input type="hidden" name="page_id" value="{{ page.id }}">
                             <input type="hidden" name="impression_id" value="{{ statistics.impression_id }}">
                             <div class="form-group">

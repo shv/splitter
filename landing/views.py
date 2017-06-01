@@ -53,6 +53,7 @@ def create_order(request):
             host_id=host.id,
             page_id=request.POST.get("page_id")
         )
+        logger.debug(request.POST.get("page_id"))
 
         result = {"status": "ok", "offer_id": request.POST["offer_id"], "order_id": order.id}
         if host.telegramm_token and host.telegramm_chat_id:
@@ -253,7 +254,7 @@ def landing(request, url):
     content["preview"] = preview
     content["page"] = page
     # Пока так, потом будем менять в зависимости от лэндинга
-    content["host"] = request.META['HTTP_HOST']
+    content["host"] = host #request.META['HTTP_HOST']
     content["statistics"] =  statistics
 
     # Подготавливаем шаблон
