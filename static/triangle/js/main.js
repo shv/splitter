@@ -23,7 +23,7 @@ jQuery(function($) {'use strict';
 
 	//Fit Vids
 	if( $('#video-container').length ) {
-		$("#video-container").fitVids();
+		$('#video-container').fitVids();
 	}
 
 	//Initiat WOW JS
@@ -78,7 +78,15 @@ jQuery(function($) {'use strict';
 	var form = $('#main-contact-form');
 	form.submit(function(event){
 		event.preventDefault();
-		var form_status = $('<div class="form_status"></div>');
+		var form_status = $('<div class="form_status"></div>'),
+			phone_number = form.find("input[name=phone]").val(),
+			offer_id = form.find("input[name=offer_id]").val(),
+			regex = /^\+\d\(\d\d\d\)\d\d\d\-\d\d\-\d\d$/;
+		if (!regex.exec(phone_number)) {
+			form.prepend( $('<div class="alert alert-danger fade in">'+
+                             '<h4>Введите, пожалуйста, корректный номер телефона в формате +7(999)000-00-00</h4></div>').fadeIn() );
+			return;
+		};
 		$.ajax({
 			url: $(this).attr('action'),
 			method: "POST",
@@ -87,12 +95,13 @@ jQuery(function($) {'use strict';
 	        },
 			data: {
 				CSRF: form.find("input[name=csrfmiddlewaretoken]").val(),
-				phone: form.find("input[name=phone]").val(),
-				offer_id: form.find("input[name=offer_id]").val(),
+				phone: phone_number,
+				offer_id: offer_id,
 				page_id: form.find("input[name=page_id]").val(),
 				impression_id: form.find("input[name=impression_id]").val(),
 			},
 			beforeSend: function(){
+				form.find('.alert-danger').hide();
 				form.prepend( form_status.html('<p><i class="fa fa-spinner fa-spin"></i> Заказ отправляется...</p>').fadeIn() );
 			}
 		}).done(function(data){
@@ -103,8 +112,14 @@ jQuery(function($) {'use strict';
 							 '</strong>.<br />В самое ближайшее время с вами свяжется наш менеджер и уточнит детали заказа и адрес доставки.<br />'+
 							 ' А пока желаем вам хорошего дня.</p>'+
 							 '</div>');
-			// form.remove();
+			try {
+				yaCounterMain.reachGoal('submitOrderSuccess', {"order_price": form.attr("data-price"), "currency":"RUB", "offer_id": offer_id, "order_id": data.order_id});
+			} catch (err) {};
 		});
+		try {
+			yaCounterMain.reachGoal('submitOrder', {"order_price": form.attr("data-price"), "currency":"RUB", "offer_id": offer_id});
+		} catch (err) {};
+
 	});
 
 	// Progress Bar

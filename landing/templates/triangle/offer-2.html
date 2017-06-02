@@ -18,7 +18,7 @@
                             <h4><center>Вы уже сделали заказ. Если хотите что-нибудь добавить, вы сможете это сделать, дождавшись звонка менеджера.</center></h4>
                         </div>
                         {% endif %}
-                        <form id="main-contact-form" name="contact-form" method="post" action="/create-order">{% csrf_token %}
+                        <form id="main-contact-form" name="contact-form" method="post" action="/create-order" data-price="3990">{% csrf_token %}
                             <p>Для заказа укажите номер вашего телефона, мы с вами свяжемся в ближайшее время.</p>
                             <input type="hidden" name="offer_id" value="2">
                             <input type="hidden" name="page_id" value="{{ page.id }}">
