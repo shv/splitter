@@ -85,6 +85,9 @@ jQuery(function($) {'use strict';
 		if (!regex.exec(phone_number)) {
 			form.prepend( $('<div class="alert alert-danger fade in">'+
                              '<h4>Введите, пожалуйста, корректный номер телефона в формате +7(999)000-00-00</h4></div>').fadeIn() );
+			try {
+				yaCounterMain.reachGoal('submitIncorrectPhone', {"order_price": form.attr("data-price"), "currency":"RUB", "offer_id": offer_id, "phone_number": phone_number});
+			} catch (err) {};
 			return;
 		};
 		$.ajax({
