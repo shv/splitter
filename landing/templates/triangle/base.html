@@ -84,6 +84,10 @@
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
         (function (d, w, c) {
+            var yaParams = {};
+            {% if creative %}
+                yaParams["creative_id"] = "{{creative.id}}";
+            {% endif %}
             (w[c] = w[c] || []).push(function() {
                 try {
                     w.yaCounterMain = new Ya.Metrika({
@@ -92,7 +96,8 @@
                         trackLinks:true,
                         accurateTrackBounce:true,
                         webvisor:true,
-                        ecommerce:"dataLayer"
+                        ecommerce:"dataLayer",
+                        params: yaParams
                     });
                 } catch(e) { }
             });

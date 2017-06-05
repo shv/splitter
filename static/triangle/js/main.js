@@ -108,16 +108,15 @@ jQuery(function($) {'use strict';
 				form.prepend( form_status.html('<p><i class="fa fa-spinner fa-spin"></i> Заказ отправляется...</p>').fadeIn() );
 			}
 		}).done(function(data){
-			console.log(data);
 			form.replaceWith('<div class="alert alert-success fade in">'+
                              '<h4><center>Спасибо за заказ.</center></h4>'+
 							 '<p>Номер вашего заказа: <strong>' + data.order_id +
 							 '</strong>.<br />В самое ближайшее время с вами свяжется наш менеджер и уточнит детали заказа и адрес доставки.<br />'+
 							 ' А пока желаем вам хорошего дня.</p>'+
 							 '</div>');
-			try {
-				yaCounterMain.reachGoal('submitOrderSuccess', {"order_price": form.attr("data-price"), "currency":"RUB", "offer_id": offer_id, "order_id": data.order_id});
-			} catch (err) {};
+			// try {
+			// 	yaCounterMain.reachGoal('submitOrderSuccess', {"order_price": form.attr("data-price"), "currency":"RUB", "offer_id": offer_id, "order_id": data.order_id});
+			// } catch (err) {};
 		});
 		try {
 			yaCounterMain.reachGoal('submitOrder', {"order_price": form.attr("data-price"), "currency":"RUB", "offer_id": offer_id});

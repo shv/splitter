@@ -1,0 +1,119 @@
+{% load static %}
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">
+                    <div class="single-service">
+                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="300ms">
+                            <div class="portfolio-single">
+                                <div class="portfolio-thumb">
+                                    <img src="{% static "triangle/images/hamster/1-kredo-mini.jpg" %}" class="img-responsive offer" alt="">
+                                </div>
+                                <div class="portfolio-view">
+                                    <ul class="nav nav-pills">
+                                        <li><a href="{% static "triangle/images/hamster/1-kredo-mini.jpg" %}" data-lightbox="orders-set"><i class="fa fa-eye"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>{% if smart.services_1_title %}{{ smart.services_1_title|safe }}{% else %}Скромная квартирка{%endif%}</h2>
+                        <p>Скромная, но многоуровневая квартирка со всем необходимым.</p>
+                    </div>
+                </div>
+                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
+                    <div class="single-service">
+                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="600ms">
+                            <div class="portfolio-single">
+                                <div class="portfolio-thumb">
+                                    <img src="{% static "triangle/images/hamster/2-ferplast-ombi-01.jpg" %}" class="img-responsive" alt="">
+                                </div>
+                                <div class="portfolio-view">
+                                    <ul class="nav nav-pills">
+                                        <li><a href="{% static "triangle/images/hamster/2-ferplast-ombi-01.jpg" %}" data-lightbox="orders-set"><i class="fa fa-eye"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>{% if smart.services_2_title %}{{ smart.services_2_title|safe }}{% else %}Однокомнатные апартаменты{%endif%}</h2>
+                        <p>Полноценное жилье, в которм есть все необходимое для комфортной жизни, даже тоннель. Очень напоминает квартиру-студию.
+                        Домик сделан в Италии.</p>
+                    </div>
+                </div>
+                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="900ms">
+                    <div class="single-service">
+                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="900ms">
+                            <div class="portfolio-single">
+                                <div class="portfolio-thumb">
+                                    <img src="{% static "triangle/images/hamster/3-ferplast-combi-2.2.jpg" %}" class="img-responsive" alt="">
+                                </div>
+                                <div class="portfolio-view">
+                                    <ul class="nav nav-pills">
+                                        <li><a href="{% static "triangle/images/hamster/3-ferplast-combi-2.2.jpg" %}" data-lightbox="orders-set"><i class="fa fa-eye"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>{% if smart.services_3_title %}{{ smart.services_3_title|safe }}{% else %}Апартаменты со спортзалом{%endif%}</h2>
+                        <p>Нескромные апартаменты для вашего хомячка. В этой простойрной уютной квартирке вашему питомцу будет очень комфортно.
+                        Домик сделан в Италии.</p>
+                    </div>
+                </div>
+                <div class="price-table">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4">
+                            <div class="single-price price-one">
+                                <div class="table-heading">
+                                    <p class="plan-name">{% if smart.prices_1_title %}{{ smart.prices_1_title|safe }}{% else %}Скромно{% endif %}</p>
+                                    <p class="plan-price"><span class="price">2250</span><span class="month">руб</span></p>
+                                </div>
+                                <ul>                            
+                                    <li>Джунгарский хомячок <span><i class="fa fa-check"></i></span></li>
+                                    <li>Скромная квартирка <span><i class="fa fa-check"></i></span></li>
+                                    <li>Упаковка корма <span><i class="fa fa-check"></i></span> </li>
+                                    <li>Наполнитель <span><i class="fa fa-check"></i></span></li>
+                                    <li>Подробные инструкции по уходу <span><i class="fa fa-check"></i></span></li>
+                                    <li>Море положительных эмоций <span><i class="fa fa-check"></i></span></li>
+                                </ul>
+                                <a href="/offer-1.html" class="btn btn-buynow" data-referer-button="1">Купить</a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="single-price price-two">
+                                <div class="table-heading">
+                                    <p class="plan-name">{% if smart.prices_2_title %}{{ smart.prices_2_title|safe }}{% else %}Средний класс{% endif %}</p>
+                                    <p class="plan-price"><span class="price">3990</span><span class="month">руб</span></p>
+                                </div>                        
+                                <ul>
+                                    <li>Джунгарский хомячок <span><i class="fa fa-check"></i></span></li>
+                                    <li>Однокомнатные апартаменты <span><i class="fa fa-check"></i></span></li>
+                                    <li>Упаковка корма <span><i class="fa fa-check"></i></span> </li>
+                                    <li>Наполнитель <span><i class="fa fa-check"></i></span></li>
+                                    <li>Подробные инструкции по уходу <span><i class="fa fa-check"></i></span></li>
+                                    <li>Море положительных эмоций <span><i class="fa fa-check"></i></span></li>
+                                </ul>
+                                <a href="/offer-2.html" class="btn btn-buynow btn-hightlight" data-referer-button="2">Купить</a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="single-price price-three">
+                                <div class="table-heading">
+                                    <p class="plan-name">{% if smart.prices_3_title %}{{ smart.prices_3_title|safe }}{% else %}Олигарх{% endif %}</p>
+                                    <p class="plan-price"><span class="price">4950</span><span class="month">руб</span></p>
+                                </div>
+                                <ul>
+                                    <li>Джунгарский хомячок <span><i class="fa fa-check"></i></span></li>
+                                    <li>Апартаменты со спортзалом <span><i class="fa fa-check"></i></span></li>
+                                    <li>Упаковка корма <span><i class="fa fa-check"></i></span> </li>
+                                    <li>Наполнитель <span><i class="fa fa-check"></i></span></li>
+                                    <li>Подробные инструкции по уходу <span><i class="fa fa-check"></i></span></li>
+                                    <li>Море положительных эмоций <span><i class="fa fa-check"></i></span></li>
+                                </ul>
+                                <a href="/offer-3.html" class="btn btn-buynow" data-referer-button="3">Купить</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/#services-->
