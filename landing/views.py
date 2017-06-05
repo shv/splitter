@@ -204,7 +204,7 @@ def landing(request, url):
                 active_line_item = line_item
                 statistics["line_item"] = line_item.id
                 # Ищем креатив для конкретной стратегии на случай если пользователь уже видел креатив (попал в ab-test)
-                creative_id = request.COOKIES.get('creative_id_for_page_%s_and_li_%s'%(page.url, line_item.id))
+                creative_id = request.COOKIES.get('creative_id_for_page_%s_and_li_%s'%(page.id, line_item.id))
                 if creative_id is not None:
                     try:
                         creative = Creative.objects.get(pk=creative_id)
@@ -233,7 +233,7 @@ def landing(request, url):
 
     # Если стратегия не отработала, то смотрим, есть ли хоть один креатив для этой страницы
     if creative is None and active_line_item is not None:
-        creative_id = request.COOKIES.get('creative_id_for_page_%s'%page.url)
+        creative_id = request.COOKIES.get('creative_id_for_page_%s'%page.id)
         if creative_id is not None:
             try:
                 creative = Creative.objects.get(pk=creative_id)
@@ -265,10 +265,10 @@ def landing(request, url):
         max_age = 365 * 24 * 60 * 60  #one year
         expires = datetime.datetime.strftime(datetime.datetime.utcnow() + datetime.timedelta(seconds=max_age), "%a, %d-%b-%Y %H:%M:%S GMT")
         # Ставим куку для страницы, на случай если стратегия не отработала
-        response.set_cookie('creative_id_for_page_%s'%page.url, creative.id, max_age=max_age, expires=expires, domain=settings.SESSION_COOKIE_DOMAIN, secure=settings.SESSION_COOKIE_SECURE or None)
+        response.set_cookie('creative_id_for_page_%s'%page.id, creative.id, max_age=max_age, expires=expires, domain=settings.SESSION_COOKIE_DOMAIN, secure=settings.SESSION_COOKIE_SECURE or None)
         # Ставим куку для конкретной стратегии
         if active_line_item:
-            response.set_cookie('creative_id_for_page_%s_and_li_%s'%(page.url, active_line_item.id), creative.id, max_age=max_age, expires=expires, domain=settings.SESSION_COOKIE_DOMAIN, secure=settings.SESSION_COOKIE_SECURE or None)
+            response.set_cookie('creative_id_for_page_%s_and_li_%s'%(page.id, active_line_item.id), creative.id, max_age=max_age, expires=expires, domain=settings.SESSION_COOKIE_DOMAIN, secure=settings.SESSION_COOKIE_SECURE or None)
 
     # log
     # creative
