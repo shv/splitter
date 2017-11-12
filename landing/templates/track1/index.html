@@ -1,0 +1,251 @@
+{% extends 'track1/base.html' %}
+{% load static %}
+{% block content %}
+    <section id="home-slider">
+        <div class="container animate-in">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h1>{% if smart.slider_title %}{{ smart.slider_title|safe }}{% else %}Гибкий трек{%endif%}</h1>
+                    <p>Наборы <strong>Гибкий трек</strong> позволяют превратить обычные машинки в удивительную, динамичную и познавательную игру.</p>
+                    <p>Гибкий трек – это комплект из машинок, интересных объектов и самой дороги, который позволяет собирать уникальные трассы и помогает развивать пространственное мышление.</p>
+                    <p>Такая игра не оставит равнодушними не только детей, но и взрослых.</p>
+                    <p>Серия включает в себя различные тематические наборы: большой город, пожарная станция, полицейский участок. Так как все детали совместимы, наборы можно комбинировать, собирая целые города и огромные гоночные тарссы.</p>
+                </div>
+                <div class="col-sm-6">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/hS59ALaTu6w?rel=0" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="preloader"><i class="fa fa-sun-o fa-spin"></i></div>
+    </section>
+    <!--/#home-slider-->
+    <section id="action" class="responsive">
+        <div class="vertical-center">
+             <div class="container">
+                <div class="row">
+                    <div class="action take-tour">
+                        <div class="col-sm-12 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
+                            <h1 class="title">Подарок при заказе двух и более наборов.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </section>
+    <section style="height:50px"></section>
+
+    {% if smart.sections_order %}
+        {% for section in smart.sections_order %}
+            {% with "track1/sections/"|add:section|add:".html" as template %}
+                {% include template %}
+            {% endwith %}
+        {% endfor %}
+    {% else %}
+        {% include "track1/sections/services.html" %}
+        {% include "track1/sections/action.html" %}
+        {% include "track1/sections/features.html" %}
+    {% endif %}
+
+    <section id="related-work" class="padding-top padding-bottom">
+        <div class="container">
+            <div class="row">
+                <h1 class="title text-center">Немного фотографий!</h1>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "track1/images/track1/0000027645_max_0000027645_1.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "track1/images/track1/0000027645_max_0000027645_1.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "track1/images/track1/0000027646_max_0000027646_1.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "track1/images/track1/0000027646_max_0000027646_1.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "track1/images/track1/0000027643_max_0000027643.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "track1/images/track1/0000027643_max_0000027643.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "track1/images/track1/1019777913.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "track1/images/track1/1019777913.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "track1/images/track1/0000027640_max_0000027640_1.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "track1/images/track1/0000027640_max_0000027640_1.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "track1/images/track1/58c8eceb29ec4.jpeg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "track1/images/track1/58c8eceb29ec4.jpeg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "track1/images/track1/2421_1.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "track1/images/track1/2421_1.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "track1/images/track1/6bd3d1f2d54a8d500e5f065e6796ec84.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "track1/images/track1/6bd3d1f2d54a8d500e5f065e6796ec84.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "track1/images/track1/2017-11-04_15-29-06.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "track1/images/track1/2017-11-04_15-29-06.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "track1/images/track1/3a542c0684a85bb2d7ef2eb0745bb468.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "track1/images/track1/3a542c0684a85bb2d7ef2eb0745bb468.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "track1/images/track1/maxresdefault-fire.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "track1/images/track1/maxresdefault-fire.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "track1/images/track1/maxresdefault.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "track1/images/track1/maxresdefault.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="price-two">
+                <a href="#prices" class="btn btn-buynow btn-hightlight">Заказать эту увлекательную игрушку прямо сейчас</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

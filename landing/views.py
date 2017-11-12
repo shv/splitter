@@ -44,7 +44,7 @@ def create_order(request):
         except Host.DoesNotExist:
             raise Http404("Domain does not exist")
 
-        description = "Offer_id: {}".format(request.POST["offer_id"])
+        description = "Offer_id: {}. Info: ".format(request.POST.get("offer_id", "-"), request.POST.get("offer_info", ""))
         order = Order.objects.create(
             phone=request.POST.get("phone"),
             description=description,
@@ -57,10 +57,21 @@ def create_order(request):
 
         result = {"status": "ok", "offer_id": request.POST["offer_id"], "order_id": order.id}
         if host.telegramm_token and host.telegramm_chat_id:
-            send_to_telegramm("Заказ на набор {}! Телефон: {}. Номер заказа: {}. Сайт: {}".format(request.POST["offer_id"], request.POST["phone"], result["order_id"], host.domain),
-                telegramm_token=host.telegramm_token,
-                telegramm_chat_id=host.telegramm_chat_id
-            )
+            try:
+                send_to_telegramm("Сайт: {}.\nЗаказ на набор {}! {}\nТелефон: {}. Номер заказа: {}.\nhttp://{}/admin/landing/order/{}/change/".format(
+                        host.domain,
+                        request.POST.get("offer_id", "-"),
+                        request.POST.get("offer_info", ""),
+                        request.POST.get("phone", "-"),
+                        result["order_id"],
+                        host.domain,
+                        result["order_id"]
+                    ),
+                    telegramm_token=host.telegramm_token,
+                    telegramm_chat_id=host.telegramm_chat_id
+                )
+            except:
+                pass
 
         ts = time.time()
         impression_id = request.POST.get('impression_id')

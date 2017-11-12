@@ -1,0 +1,121 @@
+{% load static %}
+    <section id="services">
+        <div class="container">
+            <div class="row" style="margin-bottom: 0px;">
+                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms" style="margin-bottom: 0px;">
+                    <div class="single-service">
+                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="300ms">
+                            <div class="portfolio-single">
+                                <div class="portfolio-thumb">
+                                    <img src="{% static "track1/images/track1/big-128.jpg" %}" class="img-responsive offer" alt="">
+                                </div>
+                                <div class="portfolio-view">
+                                    <ul class="nav nav-pills">
+                                        <li><a href="{% static "track1/images/track1/big-128.jpg" %}" data-lightbox="orders-set"><i class="fa fa-eye"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>{% if smart.services_1_title %}{{ smart.services_1_title|safe }}{% else %}Большое путешествие 128 деталей{%endif%}</h2>
+                        <p>Этот вариант трека Большое путешествие содержит только самые необходимые компоненты для создания увлекательной трассы. В нем есть лифт, пальмы, машинка и набор элементов самой дороги.</p>
+                    </div>
+                </div>
+                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
+                    <div class="single-service">
+                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="600ms">
+                            <div class="portfolio-single">
+                                <div class="portfolio-thumb">
+                                    <img src="{% static "track1/images/track1/fire-113.jpg" %}" class="img-responsive" alt="">
+                                </div>
+                                <div class="portfolio-view">
+                                    <ul class="nav nav-pills">
+                                        <li><a href="{% static "track1/images/track1/fire-113.jpg" %}" data-lightbox="orders-set"><i class="fa fa-eye"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>{% if smart.services_2_title %}{{ smart.services_2_title|safe }}{% else %}Пожарная станция 113 деталей{%endif%}</h2>
+                        <p>Трек оригинальной тематики. Содержит детали для построения достаточно длинной дороги, а так же в нем есть гор горка с разворотом, стрелка, мост и пожарная машинка, которая часами может ездить по треку на пожар и обратно.</p>
+                    </div>
+                </div>
+                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="900ms">
+                    <div class="single-service">
+                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="900ms">
+                            <div class="portfolio-single">
+                                <div class="portfolio-thumb">
+                                    <img src="{% static "track1/images/track1/big-317.jpg" %}" class="img-responsive" alt="">
+                                </div>
+                                <div class="portfolio-view">
+                                    <ul class="nav nav-pills">
+                                        <li><a href="{% static "track1/images/track1/big-317.jpg" %}" data-lightbox="orders-set"><i class="fa fa-eye"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>{% if smart.services_3_title %}{{ smart.services_3_title|safe }}{% else %}Большое путешествие 317 деталей{%endif%}</h2>
+                        <p>Этот самый большой набор трека Большое путешествие, в котором дорога значительно больше, чем в первом наборе. А так же есть стрелка, мост, тоннели-горки, дорожные знаки и две машинки.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="prices" class="row" style="margin-top: 10px;">
+
+                <div class="price-table" style="margin-top: 0px;">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4">
+                            <div class="single-price price-one">
+                                <div class="table-heading">
+                                    <p class="plan-name">{% if smart.prices_1_title %}{{ smart.prices_1_title|safe }}{% else %}Большое путешествие<br />128 деталей{% endif %}</p>
+                                    <p class="plan-price"><span class="price">1325</span><span class="month">руб</span></p>
+                                </div>
+                                <ul>     
+                                    <li>В наборе 128 деталей<span><i class="fa fa-check"></i></span></li>
+                                    <li>•&nbsp;гибкие элементы дороги <span><i class="fa fa-check"></i></span></li>
+                                    <li>•&nbsp;лифт <span><i class="fa fa-check"></i></span></li>
+                                    <li>•&nbsp;опора моста <span><i class="fa fa-check"></i></span> </li>
+                                    <li>•&nbsp;4 пальмы <span><i class="fa fa-check"></i></span></li>
+                                    <li>•&nbsp;машинка <span><i class="fa fa-check"></i></span></li>
+                                </ul>
+                                <a href="/offer-1.html" class="btn btn-buynow" data-referer-button="1">Купить</a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="single-price price-two">
+                                <div class="table-heading">
+                                    <p class="plan-name">{% if smart.prices_2_title %}{{ smart.prices_2_title|safe }}{% else %}Пожарная станция<br />113 деталей{% endif %}</p>
+                                    <p class="plan-price"><span class="price">1990</span><span class="month">руб</span></p>
+                                </div>                        
+                                <ul>
+                                    <li>В наборе 113 деталей <span><i class="fa fa-check"></i></span></li>
+                                    <li>•&nbsp;гибкие элементы дороги <span><i class="fa fa-check"></i></span></li>
+                                    <li>•&nbsp;подъём с разворотом <span><i class="fa fa-check"></i></span> </li>
+                                    <li>•&nbsp;стрелка <span><i class="fa fa-check"></i></span></li>
+                                    <li>•&nbsp;дорожные знаки <span><i class="fa fa-check"></i></span></li>
+                                    <li>•&nbsp;машинка <span><i class="fa fa-check"></i></span></li>
+                                </ul>
+                                <a href="/offer-2.html" class="btn btn-buynow btn-hightlight" data-referer-button="2">Купить</a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="single-price price-three">
+                                <div class="table-heading">
+                                    <p class="plan-name">{% if smart.prices_3_title %}{{ smart.prices_3_title|safe }}{% else %}Большое путешествие<br />317 деталей{% endif %}</p>
+                                    <p class="plan-price"><span class="price">2799</span><span class="month">руб</span></p>
+                                </div>
+                                <ul>
+                                    <li>В наборе 317 деталей для постройки трека <span><i class="fa fa-check"></i></span></li>
+                                    <li>•&nbsp;лифт <span><i class="fa fa-check"></i></span></li>
+                                    <li>•&nbsp;опоры для постройки моста <span><i class="fa fa-check"></i></span> </li>
+                                    <li>•&nbsp;перекрёсток <span><i class="fa fa-check"></i></span></li>
+                                    <li>•&nbsp;стрелка для смены направления движения <span><i class="fa fa-check"></i></span></li>
+                                    <li>•&nbsp;2 машинки <span><i class="fa fa-check"></i></span></li>
+                                </ul>
+                                <a href="/offer-3.html" class="btn btn-buynow" data-referer-button="3">Купить</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/#services-->

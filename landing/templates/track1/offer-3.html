@@ -1,0 +1,133 @@
+{% extends 'track1/base.html' %}
+{% block meta_description %}Игровой набор Большое путешествие 317 деталей.{% endblock %}
+{% load static %}
+{% block content %}
+    <section id="portfolio-information" class="padding-top" style="padding-top:0px">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <img src="{% static "track1/images/track1/big-317.jpg" %}" class="img-responsive" alt="">
+                </div>
+                <div class="col-sm-6">
+                    <div class="project-name overflow">
+                        <h2 class="bold">Большое путешествие 317 деталей</h2>
+                    </div>
+                    <div class="project-info overflow">
+                        {% if has_orders %}
+                        <div class="alert alert-warning fade in">
+                            <h4><center>Вы уже сделали заказ. Если хотите что-нибудь добавить, вы сможете это сделать, дождавшись звонка менеджера.</center></h4>
+                        </div>
+                        {% endif %}
+                        <form id="main-contact-form" name="contact-form" method="post" action="/create-order" data-price="2799">{% csrf_token %}
+                            <p>Для заказа укажите номер вашего телефона, мы с вами свяжемся в ближайшее время.</p>
+                            <input type="hidden" name="offer_id" value="3">
+                            <input type="hidden" name="offer_info" value="Большое путешествие 317 деталей за 2799 рубля">
+                            <input type="hidden" name="page_id" value="{{ page.id }}">
+                            <input type="hidden" name="impression_id" value="{{ statistics.impression_id }}">
+                            <div class="form-group">
+                                <input type="phone" name="phone" class="form-control" required="required" placeholder="Номер телефона" style="border-color: #f0ad4e;" data-mask="+7(000)000-00-00" data-mask-selectonfocus="true">
+                            </div>
+                            <div class="form-group" style="text-align: center">
+                                <input type="submit" name="submit" class="btn btn-lg btn-warning" value="Заказать за 2799 рублей">
+                            </div>
+                        </form>
+
+                        <p>В наборе 317 деталей:
+                        </p>
+                        <ul class="elements">
+                            <li><i class="fa fa-angle-right"></i> Гибкие элементы дороги.</li>
+                            <li><i class="fa fa-angle-right"></i> Лифт.</li>
+                            <li><i class="fa fa-angle-right"></i> Опоры для постройки моста.</li>
+                            <li><i class="fa fa-angle-right"></i> Перекрёсток.</li>
+                            <li><i class="fa fa-angle-right"></i> Стрелка для смены направления движения.</li>
+                            <li><i class="fa fa-angle-right"></i> 2 машинки.</li>
+                        </ul>
+                        <p>Машинка работает от 1 батарейки "АА" (не входит в комплект).</p>
+                        <p>Материал: пластик.</p>
+                        <p>Соответствует требованиям безопасности продукции.</p>
+                        <p>Для детей от 3-х лет.</p>
+                        <p>Цена набора всего <strong>2799</strong> рублей.</p>
+                        <p>Цена набора с доставкой <strong>3099</strong> рублей. Адрес доставки, пожалуйста, сообщите по телефону.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+     <!--/#portfolio-information-->
+
+    <section id="related-work" class="padding-top padding-bottom">
+        <div class="container">
+            <div class="row">
+                <h1 class="title text-center">В комплект доставки входит</h1>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "track1/images/track1/1019777931.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "track1/images/track1/1019777931.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                            <h2>В собранном виде (цвета могут отличаться)</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "track1/images/track1/big-317-1.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "track1/images/track1/big-317-1.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                            <h2>Комплектация</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "track1/images/track1/6bd3d1f2d54a8d500e5f065e6796ec84.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "track1/images/track1/6bd3d1f2d54a8d500e5f065e6796ec84.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                            <h2>Машинка (цвет может отличаться)</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "track1/images/track1/3a542c0684a85bb2d7ef2eb0745bb468.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "track1/images/track1/3a542c0684a85bb2d7ef2eb0745bb468.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                            <h2>Пальма</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
