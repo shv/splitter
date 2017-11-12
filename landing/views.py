@@ -58,7 +58,7 @@ def create_order(request):
         result = {"status": "ok", "offer_id": request.POST["offer_id"], "order_id": order.id}
         if host.telegramm_token and host.telegramm_chat_id:
             try:
-                send_to_telegramm("Сайт: {}.\nЗаказ на набор {}! {}\nТелефон: {}. Номер заказа: {}.\nhttp://{}/admin/landing/order/{}/change/".format(
+                send_to_telegramm("Сайт: {}.\nЗаказ на набор {}! {}\nТелефон: {}. Номер заказа: {}.\nhttp://{}/admin/landing/order/{}/".format(
                         host.domain,
                         request.POST.get("offer_id", "-"),
                         request.POST.get("offer_info", ""),
