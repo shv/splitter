@@ -44,7 +44,7 @@ def create_order(request):
         except Host.DoesNotExist:
             raise Http404("Domain does not exist")
 
-        description = "Offer_id: {}. Info: ".format(request.POST.get("offer_id", "-"), request.POST.get("offer_info", ""))
+        description = "Offer_id: {}. Info: {}".format(request.POST.get("offer_id", "-"), request.POST.get("offer_info", ""))
         order = Order.objects.create(
             phone=request.POST.get("phone"),
             description=description,
