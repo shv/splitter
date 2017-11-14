@@ -18,17 +18,17 @@
                             <h4><center>Вы уже сделали заказ. Если хотите что-нибудь добавить, вы сможете это сделать, дождавшись звонка менеджера.</center></h4>
                         </div>
                         {% endif %}
-                        <form id="main-contact-form" name="contact-form" method="post" action="/create-order" data-price="2799">{% csrf_token %}
+                        <form id="main-contact-form" name="contact-form" method="post" action="/create-order" data-price="3299">{% csrf_token %}
                             <p>Для заказа укажите номер вашего телефона, мы с вами свяжемся в ближайшее время.</p>
                             <input type="hidden" name="offer_id" value="3">
-                            <input type="hidden" name="offer_info" value="Большое путешествие 317 деталей за 2799 рубля">
+                            <input type="hidden" name="offer_info" value="Большое путешествие 317 деталей за 3299 рубля">
                             <input type="hidden" name="page_id" value="{{ page.id }}">
                             <input type="hidden" name="impression_id" value="{{ statistics.impression_id }}">
                             <div class="form-group">
                                 <input type="phone" name="phone" class="form-control" required="required" placeholder="Номер телефона" style="border-color: #f0ad4e;" data-mask="+7(000)000-00-00" data-mask-selectonfocus="true">
                             </div>
                             <div class="form-group" style="text-align: center">
-                                <input type="submit" name="submit" class="btn btn-lg btn-warning" value="Заказать за 2799 рублей">
+                                <input type="submit" name="submit" class="btn btn-lg btn-warning" value="Заказать за 3299 рублей">
                             </div>
                         </form>
 
@@ -46,8 +46,8 @@
                         <p>Материал: пластик.</p>
                         <p>Соответствует требованиям безопасности продукции.</p>
                         <p>Для детей от 3-х лет.</p>
-                        <p>Цена набора всего <strong>2799</strong> рублей.</p>
-                        <p>Цена набора с доставкой <strong>3099</strong> рублей. Адрес доставки, пожалуйста, сообщите по телефону.</p>
+                        <p>Цена набора всего <strong>3299</strong> рублей.</p>
+                        <p>Цена набора с доставкой <strong>3599</strong> рублей. Адрес доставки, пожалуйста, сообщите по телефону.</p>
                     </div>
                 </div>
             </div>
