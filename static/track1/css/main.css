@@ -2745,3 +2745,15 @@ span.stButton_gradient,
   border-radius: 100%;
   margin: 10px 0;
 }
+@media(max-width:560px) {
+  .youtube-video {
+    width: 100%;
+    height: auto;
+  }
+  .logo {
+    width: 100%;
+    height: auto;
+  }
+}
+
+
