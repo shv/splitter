@@ -772,7 +772,7 @@ footer a:hover
 	}
 
 	.section-content-title {
-		font-size: 45px;
+		font-size: 30px;
 	}
 
 	.btn-reservation {
@@ -837,7 +837,7 @@ footer a:hover
 	}
 
 	.section-content-title {
-		font-size: 45px;
+		font-size: 30px;
 	}
 
 	.section-header {
@@ -909,5 +909,9 @@ footer a:hover
 
 	.btn-reservation {
 		padding: 10px;
+	}
+	.main-video iframe {
+		/*height:auto;*/
+		width:100%;
 	}
 }
