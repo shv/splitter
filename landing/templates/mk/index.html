@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>{% load static %}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <link rel="shortcut icon" href="images/star.png" type="favicon/ico" /> -->
+
+        <title>Mamma's Kitchen</title>
+
+        <link rel="stylesheet" href="{% static "mk/css/bootstrap.min.css" %}">
+        <link rel="stylesheet" href="{% static "mk/css/font-awesome.min.css" %}">
+        <link rel="stylesheet" href="{% static "mk/css/owl.carousel.css" %}">
+        <link rel="stylesheet" href="{% static "mk/css/owl.theme.css" %}">
+        <link rel="stylesheet" href="{% static "mk/css/animate.css" %}">
+        <link rel="stylesheet" href="{% static "mk/css/flexslider.css" %}">
+        <link rel="stylesheet" href="{% static "mk/css/pricing.css" %}">
+        <link rel="stylesheet" href="{% static "mk/css/main.css" %}">
+
+
+        <script src="{% static "mk/js/jquery-1.11.2.min.js" %}"></script>
+        <script type="text/javascript" src="{% static "mk/js/jquery.flexslider.min.js" %}"></script>
+        <script type="text/javascript">
+            $(window).load(function() {
+                $('.flexslider').flexslider({
+                 animation: "slide",
+                 controlsContainer: ".flexslider-container"
+                });
+            });
+        </script>
+
+        <script src="https://maps.googleapis.com/maps/api/js"></script>
+        <script>
+            function initialize() {
+                var mapCanvas = document.getElementById('map-canvas');
+                var mapOptions = {
+                    center: new google.maps.LatLng(24.909439, 91.833800),
+                    zoom: 16,
+                    scrollwheel: false,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                }
+                var map = new google.maps.Map(mapCanvas, mapOptions)
+
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(24.909439, 91.833800),
+                    title:"Mamma's Kitchen Restaurant"
+                });
+
+                // To add the marker to the map, call setMap();
+                marker.setMap(map);
+            }
+            google.maps.event.addDomListener(window, 'load', initialize);
+        </script>
+
+
+    </head>
+    <body data-spy="scroll" data-target="#template-navbar">
+
+        <!--== 4. Navigation ==-->
+        <nav id="template-navbar" class="navbar navbar-default custom-navbar-default navbar-fixed-top">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#Food-fair-toggle">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">
+                        <img id="logo" src="{% static "mk/images/Logo_main.png" %}" data-logo-main="{% static "mk/images/Logo_main.png" %}" data-logo-stick="{% static "mk/images/Logo_stick.png" %}" class="logo img-responsive">
+                    </a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="Food-fair-toggle">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#about">Видео</a></li>
+                        <li><a href="#pricing">Цена</a></li>
+                        <li><a href="#great-place-to-enjoy">Краб</a></li>
+                        <li><a href="#breakfast">Зеркало</a></li>
+                        <li><a href="#featured-dish">featured</a></li>
+                        <li><a href="#reserve">reservation</a></li>
+                        <li><a href="#contact">contact</a></li>
+                        <li><a href="tel:+7(495)166-58-69">+7(495)166-58-69</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.row -->
+        </nav>
+
+
+        <!--== 5. Header ==-->
+        <section id="header-slider" class="owl-carousel">
+            <div class="item" style="background-image: url('{% static "mk/images/mat/maxresdefault-0.jpg" %}');">
+                <div class="container">
+                    <div class="header-content">
+                        <h1 class="header-title">Развитие</h1>
+                        <p class="header-sub-title"></p>
+                    </div>
+                </div>
+            </div>
+<!--             <div class="item" style="background-image: url('{% static "mk/images/mat/maxresdefault-1.jpg" %}');">
+                <div class="container">
+                    <div class="header-content">
+                        <h1 class="header-title">Внимание</h1>
+                        <p class="header-sub-title"></p>
+                    </div>
+                </div>
+            </div> -->
+            <div class="item" style="background-image: url('{% static "mk/images/mat/maxresdefault-2.jpg" %}');">
+                <div class="container">
+                    <div class="header-content text-right pull-right">
+                        <h1 class="header-title">Интерес</h1>
+                        <p class="header-sub-title"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!--== 6. About us ==-->
+        <section id="about" class="about">
+            <img src="{% static "mk/images/mat/A-baby-cot-icon.png" %}" class="img-responsive section-icon hidden-sm hidden-xs">
+            <div class="wrapper">
+                <div class="container-fluid">
+                    <div class="row dis-table">
+                        <div class="col-xs-6 col-sm-6 dis-table-cell" style="padding: 30px 0;float:left;">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/fng7rdCjkw8?rel=0" frameborder="0" allowfullscreen style="width:100%"></iframe>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 dis-table-cell" style="float:left;">
+                            <div class="section-content" style="padding: 20px 10%;">
+                                <h2 class="section-content-title">«Подводный мир»</h2>
+                                <p class="section-content-para">
+                                    Развивающий коврик «Подводный мир» с дугами выполнен в морской тематике. На красочном коврике изображены различные морские жители, водоросли и даже сундук с сокровищами. Яркие дуги с игрушками в виде краба, чайки и различными погремушками позволят надолго увлечь ребенка, стимулируя его двигательную активность и внимание.
+                                </p>
+                            </div> <!-- /.section-content -->
+                        </div>
+                    </div> <!-- /.row -->
+                </div> <!-- /.container-fluid -->
+            </div> <!-- /.wrapper -->
+        </section> <!-- /#about -->
+
+
+        <!--==  7. Afordable Pricing  ==-->
+        <section id="pricing" class="pricing">
+            <div id="w">
+                <div class="pricing-filter">
+                    <div class="pricing-filter-wrapper">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-10 col-md-offset-1">
+                                    <div class="text-center">
+                                        <button type="submit" id="submit" name="submit" class="btn btn-send">Заказать развивающий коврик </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row">  
+                        <div class="col-md-10 col-md-offset-1">
+                            <ul id="menu-pricing" class="menu-price">
+                                <li class="item dinner">
+
+                                    <a href="#">
+                                        <img src="{% static "mk/images/mat/razvivayuschiy-kovrik-s-dugami-podvodnyiy-mir-tiny-love-1.jpg" %}" class="img-responsive" alt="Food" >
+                                        <div class="menu-desc text-center">
+                                            <span>
+                                                <h3>Tomato Curry</h3>
+                                                Natalie &amp; Justin Cleaning by Justin Younger
+                                            </span>
+                                        </div>
+                                    </a>
+                                        
+                                </li>
+
+                                <li class="item desert">
+
+                                    <a href="#">
+                                        <img src="{% static "mk/images/mat/81WBDPRbFrL._SL1500_.jpg" %}" class="img-responsive" alt="Food" >
+                                        <div class="menu-desc">
+                                            <span>
+                                                <h3>Salad Dish</h3>
+                                                Consectetur adipisicing elit, sed do eiusmod
+                                            </span>
+                                        </div>
+                                    </a>
+                                        
+                                </li>
+
+                                <li class="item breakfast">
+
+                                    <a href="#">
+                                        <img src="{% static "mk/images/mat/razvivayuschiy-kovrik-s-dugami-podvodnyiy-mir-tiny-love.jpg" %}" class="img-responsive" alt="Food" >
+                                        <div class="menu-desc">
+                                            <span>
+                                                <h3>Prawn Dish</h3>
+                                                Lorem ipsum dolor sit amet
+                                            </span>
+                                        </div>
+                                    </a>
+                                        
+                                </li>
+
+                            <!-- <div class="text-center">
+                                    <a id="loadPricingContent" class="btn btn-middle hidden-sm hidden-xs">Load More <span class="caret"></span></a>
+                            </div> -->
+
+                        </div>   
+                    </div>
+                </div>
+
+            </div> 
+        </section>
+
+
+        <!--== 8. Great Place to enjoy ==-->
+        <section id="great-place-to-enjoy" class="great-place-to-enjoy">
+            <img class="img-responsive section-icon hidden-sm hidden-xs" src="{% static "mk/images/mat/Emoji_u1f37c.svg.png" %}">
+            <div class="wrapper">
+                <div class="container-fluid">
+                    <div class="row dis-table">
+                        <div class="col-xs-6 col-sm-6 dis-table-cell color-bg">
+                            <h2 class="section-title">Электронный музыкальный краб</h2>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 dis-table-cell section-bg">
+                            
+                        </div>
+                    </div> <!-- /.dis-table -->
+                </div> <!-- /.row -->
+            </div> <!-- /.wrapper -->
+        </section> <!-- /#great-place-to-enjoy -->
+
+
+
+        <!--==  9. Our Beer  ==-->
+        <section id="beer" class="beer">
+            <img class="img-responsive section-icon hidden-sm hidden-xs" src="{% static "mk/images/mat/blue-pacifier-clipart.png" %}">
+            <div class="container-fluid">
+                <div class="row dis-table">
+                    <div class="hidden-xs col-sm-6 dis-table-cell section-bg">
+
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 dis-table-cell">
+                        <div class="section-content">
+                            <h2 class="section-content-title">Электронный краб</h2>
+                            <div class="section-description">
+                                <p class="section-content-para">
+                                    С 6 месяцев наиболее интересным для ребенка станет музыкальный краб, который издает забавные звуки и позволяет ребенку изучать связь между причиной и следствием.
+                                </p>
+                                <p class="section-content-para">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!--== 10. Our Breakfast Menu ==-->
+        <section id="breakfast" class="breakfast">
+            <img class="img-responsive section-icon hidden-sm hidden-xs" src="{% static "mk/images/mat/cub_airplanes_lesson06_activity1_header_image.png" %}">
+            <div class="wrapper">
+                <div class="container-fluid">
+                    <div class="row dis-table">
+                        <div class="col-xs-6 col-sm-6 dis-table-cell color-bg">
+                            <h2 class="section-title">Our Breakfast Menu</h2>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 dis-table-cell section-bg">
+                            
+                        </div>
+                    </div> <!-- /.dis-table -->
+                </div> <!-- /.row -->
+            </div> <!-- /.wrapper -->
+        </section> <!-- /#breakfast -->
+
+
+
+        <!--== 11. Our Bread ==-->
+        <section id="bread" class="bread">
+            <img class="img-responsive section-icon hidden-sm hidden-xs" src="{% static "mk/images/mat/c4bdd13ac0467c48_256x256.png" %}">
+            <div class="container-fluid">
+                <div class="row dis-table">
+                    <div class="hidden-xs col-sm-6 dis-table-cell section-bg">
+
+                    </div>
+                    <div class="col-xs-12 col-sm-6 dis-table-cell">
+                        <div class="section-content">
+                            <h2 class="section-content-title">
+                                Our Bread
+                            </h2>
+                            <div class="section-description">
+                                <p class="section-content-para">
+                                    Astronomy compels the soul to look upward, and leads us from this world to another.  Curious that we spend more time congratulating people who have succeeded than encouraging people who have not. As we got further and further away, it [the Earth] diminished in size.
+                                </p>
+                                <p class="section-content-para">
+                                    beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.  Where ignorance lurks, so too do the frontiers of discovery and imagination.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <!--== 12. Our Featured Dishes Menu ==-->
+        <section id="featured-dish" class="featured-dish">
+            <img class="img-responsive section-icon hidden-sm hidden-xs" src="{% static "mk/images/icons/food_black.png" %}">
+            <div class="wrapper">
+                <div class="container-fluid">
+                    <div class="row dis-table">
+                        <div class="col-xs-6 col-sm-6 dis-table-cell color-bg">
+                            <h2 class="section-title">Our Featured Dishes Menu</h2>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 dis-table-cell section-bg">
+                            
+                        </div>
+                    </div> <!-- /.dis-table -->
+                </div> <!-- /.row -->
+            </div> <!-- /.wrapper -->
+        </section> <!-- /#featured-dish -->
+
+
+
+
+        <section class="reservation">
+            <img class="img-responsive section-icon hidden-sm hidden-xs" src="{% static "mk/images/icons/reserve_color.png" %}">
+            <div class="wrapper">
+                <div class="container-fluid">
+                    <div class=" section-content">
+                        <div class="row">
+                            <div class="col-md-5 col-sm-6">
+                                <form class="reservation-form" method="post" action="reserve.php">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control reserve-form empty iconified" name="name" id="name" required="required" placeholder="  &#xf007;  Name">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="email" name="email" class="form-control reserve-form empty iconified" id="email" required="required" placeholder="  &#xf1d8;  e-mail">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="form-group">
+                                                <input type="tel" class="form-control reserve-form empty iconified" name="phone" id="phone" required="required" placeholder="  &#xf095;  Phone">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control reserve-form empty iconified" name="datepicker" id="datepicker" required="required" placeholder="&#xf017;  Time">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12 col-sm-12">
+                                            <textarea type="text" name="message" class="form-control reserve-form empty iconified" id="message" rows="3" required="required" placeholder="  &#xf086;  We're listening"></textarea>
+                                        </div>
+
+                                        <div class="col-md-12 col-sm-12">
+                                            <button type="submit" id="submit" name="submit" class="btn btn-reservation">
+                                                <span><i class="fa fa-check-circle-o"></i></span>
+                                                Make a reservation
+                                            </button>
+                                        </div>
+                                            
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="col-md-2 hidden-sm hidden-xs"></div>
+
+                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                <div class="opening-time">
+                                    <h3 class="opening-time-title">Hours</h3>
+                                    <p>Mon to Fri: 7:30 AM - 11:30 AM</p>
+                                    <p>Sat & Sun: 8:00 AM - 9:00 AM</p>
+
+                                    <div class="launch">
+                                        <h4>Lunch</h4>
+                                        <p>Mon to Fri: 12:00 PM - 5:00 PM</p>
+                                    </div>
+
+                                    <div class="dinner">
+                                        <h4>Dinner</h4>
+                                        <p>Mon to Sat: 6:00 PM - 1:00 AM</p>
+                                        <p>Sun: 5:30 PM - 12:00 AM</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <section id="contact" class="contact">
+            <div class="container-fluid color-bg">
+                <div class="row dis-table">
+                    <div class="hidden-xs col-sm-6 dis-table-cell">
+                        <h2 class="section-title">Contact With us</h2>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 dis-table-cell">
+                        <div class="section-content">
+                            <p>16th Birn street Get Plaza (4th floar) USA</p>
+                            <p>+44 12 213584</p>
+                            <p>example@mail.com </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-media">
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                            <ul class="center-block">
+                                <li><a href="#" class="fb"></a></li>
+                                <li><a href="#" class="twit"></a></li>
+                                <li><a href="#" class="g-plus"></a></li>
+                                <li><a href="#" class="link"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div id="map-canvas"></div>
+            </div>
+        </div>
+
+
+
+        <section class="contact-form">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
+                        <div class="row">
+                             <form class="contact-form" method="post" action="contact.php">
+                                
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <input  name="name" type="text" class="form-control" id="name" required="required" placeholder="  Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <input name="email" type="email" class="form-control" id="email" required="required" placeholder="  Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <input name="subject" type="text" class="form-control" id="subject" required="required" placeholder="  Subject">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-sm-6">
+                                    <textarea name="message" type="text" class="form-control" id="message" rows="7" required="required" placeholder="  Message"></textarea>
+                                </div>
+
+                                <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+                                    <div class="text-center">
+                                        <button type="submit" id="submit" name="submit" class="btn btn-send">Send </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="copyright text-center">
+                            <p>
+                                &copy;&nbsp;2017{% now "Y" as now_year %}{% if not now_year == "2017" %}&nbsp;–&nbsp;{{ now_year }}{% endif %}&nbsp; <a href="#">Your Website Link</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    
+        <script src="{% static "mk/js/bootstrap.min.js" %}"></script>
+        <script src="{% static "mk/js/owl.carousel.min.js" %}"></script>
+        <script type="text/javascript" src="{% static "mk/js/jquery.mixitup.min.js" %}" ></script>
+        <script src="{% static "mk/js/wow.min.js" %}"></script>
+        <script src="{% static "mk/js/jquery.validate.js" %}"></script>
+        <script type="text/javascript" src="{% static "mk/js/jquery.hoverdir.js" %}"></script>
+        <!-- <script type="text/javascript" src="{% static "mk/js/jQuery.scrollSpeed.js" %}"></script> -->
+        <script src="{% static "mk/js/script.js" %}"></script>
+        
+
+    </body>
+</html>
