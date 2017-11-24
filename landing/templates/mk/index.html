@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- <link rel="shortcut icon" href="images/star.png" type="favicon/ico" /> -->
 
-        <title>Детский развивающий коврик "Морские приключения"</title>
+        <title>Детский развивающий коврик «Подводный мир»</title>
 
         <link rel="stylesheet" href="{% static "mk/css/bootstrap.min.css" %}">
         <link rel="stylesheet" href="{% static "mk/css/font-awesome.min.css" %}">
@@ -98,14 +98,6 @@
                     </div>
                 </div>
             </div>
-<!--             <div class="item" style="background-image: url('{% static "mk/images/mat/maxresdefault-1.jpg" %}');">
-                <div class="container">
-                    <div class="header-content">
-                        <h1 class="header-title">Внимание</h1>
-                        <p class="header-sub-title"></p>
-                    </div>
-                </div>
-            </div> -->
             <div class="item" style="background-image: url('{% static "mk/images/mat/maxresdefault-2.jpg" %}');">
                 <div class="container">
                     <div class="header-content text-right pull-right">
@@ -217,7 +209,6 @@
         </section>
 
 
-        <!--== 8. Great Place to enjoy ==-->
         <section id="great-place-to-enjoy" class="great-place-to-enjoy">
             <img class="img-responsive section-icon hidden-sm hidden-xs" src="{% static "mk/images/mat/Emoji_u1f37c.svg.png" %}">
             <div class="wrapper">
@@ -236,7 +227,6 @@
 
 
 
-        <!--==  9. Our Beer  ==-->
         <section id="beer" class="beer">
             <img class="img-responsive section-icon hidden-sm hidden-xs" src="{% static "mk/images/mat/blue-pacifier-clipart.png" %}">
             <div class="container-fluid">
@@ -261,9 +251,6 @@
             </div>
         </section>
 
-
-
-        <!--== 10. Our Breakfast Menu ==-->
         <section id="mirror" class="breakfast">
             <img class="img-responsive section-icon hidden-sm hidden-xs" src="{% static "mk/images/mat/872f2395-0cd4-4976-b5a8-1c92d8577b6f.png" %}">
             <div class="wrapper">
@@ -280,8 +267,6 @@
             </div> <!-- /.wrapper -->
         </section> <!-- /#breakfast -->
 
-
-        <!--== 11. Our Bread ==-->
         <section id="bread" class="bread">
             <img class="img-responsive section-icon hidden-sm hidden-xs" src="{% static "mk/images/mat/c4bdd13ac0467c48_256x256.png" %}">
             <div class="container-fluid">
@@ -308,17 +293,12 @@
             </div>
         </section>
 
-
-
-
-
-
         <section id="reserve" class="reservation">
-                            <h1 class="section-content-title" style="text-align: center">
-                                Закажите коврик<br>
-                                «Подводный мир»<br>
-                                с бесплатной доставкой
-                            </h1>
+            <h1 class="section-content-title" style="text-align: center">
+                Закажите коврик<br>
+                «Подводный мир»<br>
+                с бесплатной доставкой
+            </h1>
             <img class="img-responsive section-icon hidden-sm hidden-xs" src="{% static "mk/images/mat/cub_airplanes_lesson06_activity1_header_image.png" %}">
             <div class="wrapper">
                 <div class="container-fluid">
@@ -350,10 +330,9 @@
                                                 Заказать коврик
                                             </button>
                                         </div>
-                            <input type="hidden" name="offer_id" value="1">
-                            <input type="hidden" name="page_id" value="{{ page.id }}">
-                            <input type="hidden" name="impression_id" value="{{ statistics.impression_id }}">
-
+                                        <input type="hidden" name="offer_id" value="1">
+                                        <input type="hidden" name="page_id" value="{{ page.id }}">
+                                        <input type="hidden" name="impression_id" value="{{ statistics.impression_id }}">
                                     </div>
                                 </form>
                             </div>
@@ -379,19 +358,14 @@
                         </div>
 
                     </div>
-                        {% if has_orders %}
+                    {% if has_orders %}
                         <div class="alert alert-warning fade in">
                             <h4><center>Вы уже сделали заказ. Если хотите что-нибудь добавить, вы сможете это сделать, дождавшись звонка менеджера. Или позвоните нам по телефону: <a href="tel:+7(495)166-58-69">+7(495)166-58-69</a></center></h4>
                         </div>
-                        {% endif %}
-
+                    {% endif %}
                 </div>
             </div>
         </section>
-
-
-
-
 
         <footer>
             <div class="container">
@@ -400,14 +374,14 @@
                         <div class="copyright text-center">
                             <p>
                                 &copy;&nbsp;2017{% now "Y" as now_year %}{% if not now_year == "2017" %}&nbsp;–&nbsp;{{ now_year }}{% endif %}&nbsp; <a href="http://sea.shop-for-baby.ru">Развивающий коврик «Подводный мир»</a><br>
-                                Телефон для связи: <a href="tel:+7(495)166-58-69" style="color:#fff;">+7(495)166-58-69</a>
+                                Телефон для связи: <a href="tel:+7(495)166-58-69" style="color:#fff;">+7(495)166-58-69</a><br>
+                                Для связи с руководителем магазина пишите <a href="mailto:director@shop-for-baby.ru" style="color:#fff;">director@shop-for-baby.ru</a>
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
         </footer>
-
     
         <script src="{% static "mk/js/bootstrap.min.js" %}"></script>
         <script src="{% static "mk/js/owl.carousel.min.js" %}"></script>
@@ -419,50 +393,51 @@
         <!-- <script type="text/javascript" src="{% static "mk/js/jQuery.scrollSpeed.js" %}"></script> -->
         <script src="{% static "mk/js/script.js" %}"></script>
         
-    {% if not preview %}
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-        (function (d, w, c) {
-            var yaParams = {};
-            {% if creative %}
-                yaParams["creative_id"] = "{{creative.id}}";
-            {% endif %}
-            (w[c] = w[c] || []).push(function() {
-                try {
-                    w.yaCounterMain = new Ya.Metrika({
-                        id:{% if host.domain == 'sea.shop-for-baby.ru' %}46762458{% else %}44839867{% endif %},
-                        clickmap:true,
-                        trackLinks:true,
-                        accurateTrackBounce:true,
-                        webvisor:true,
-                        ecommerce:"dataLayer",
-                        params: yaParams
-                    });
-                } catch(e) { }
-            });
+        {% if not preview %}
+        <!-- Yandex.Metrika counter -->
+        <script type="text/javascript">
+            (function (d, w, c) {
+                var yaParams = {};
+                {% if creative %}
+                    yaParams["creative_id"] = "{{creative.id}}";
+                {% endif %}
+                (w[c] = w[c] || []).push(function() {
+                    try {
+                        w.yaCounterMain = new Ya.Metrika({
+                            id:{% if host.domain == 'sea.shop-for-baby.ru' %}46762458{% else %}44839867{% endif %},
+                            clickmap:true,
+                            trackLinks:true,
+                            accurateTrackBounce:true,
+                            webvisor:true,
+                            ecommerce:"dataLayer",
+                            params: yaParams
+                        });
+                    } catch(e) { }
+                });
 
-            var n = d.getElementsByTagName("script")[0],
-                s = d.createElement("script"),
-                f = function () { n.parentNode.insertBefore(s, n); };
-            s.type = "text/javascript";
-            s.async = true;
-            s.src = "https://mc.yandex.ru/metrika/watch.js";
+                var n = d.getElementsByTagName("script")[0],
+                    s = d.createElement("script"),
+                    f = function () { n.parentNode.insertBefore(s, n); };
+                s.type = "text/javascript";
+                s.async = true;
+                s.src = "https://mc.yandex.ru/metrika/watch.js";
 
-            if (w.opera == "[object Opera]") {
-                d.addEventListener("DOMContentLoaded", f, false);
-            } else { f(); }
-        })(document, window, "yandex_metrika_callbacks");
-    </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/{% if host.domain == 'sea.shop-for-baby.ru' %}46762458{% else %}44839867{% endif %}" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- /Yandex.Metrika counter -->
-    {% endif %}
-<script type="text/javascript">
-    document.write(unescape("%3Cscript src='" + "//yandex.mightycall.ru/CallbackWidget/js/MightyCallCBW.js' type='text/javascript'%3E%3C/script%3E"));   
-    document.write(unescape("%3Cscript src='" + "//mightycallstorage.blob.core.windows.net/cbw/e8df2718-31a7-4ef3-895f-cffb9b06790c__widget.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-    InitCallbackWidget();
-</script>
+                if (w.opera == "[object Opera]") {
+                    d.addEventListener("DOMContentLoaded", f, false);
+                } else { f(); }
+            })(document, window, "yandex_metrika_callbacks");
+        </script>
+        <noscript><div><img src="https://mc.yandex.ru/watch/{% if host.domain == 'sea.shop-for-baby.ru' %}46762458{% else %}44839867{% endif %}" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+        <!-- /Yandex.Metrika counter -->
+        {% endif %}
+
+        <script type="text/javascript">
+            document.write(unescape("%3Cscript src='" + "//yandex.mightycall.ru/CallbackWidget/js/MightyCallCBW.js' type='text/javascript'%3E%3C/script%3E"));   
+            document.write(unescape("%3Cscript src='" + "//mightycallstorage.blob.core.windows.net/cbw/e8df2718-31a7-4ef3-895f-cffb9b06790c__widget.js' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+        <script type="text/javascript">
+            InitCallbackWidget();
+        </script>
 
     </body>
 </html>
