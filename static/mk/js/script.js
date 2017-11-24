@@ -1,4 +1,70 @@
+jQuery(function($) {'use strict';
+    $('a[data-referer-button]').click(function(){
+        var referer_button = $(this).attr('data-referer-button'),
+            args = "?impression_id="+impression_id;
+            if (referer_button) {
+                args = args+"&referer_button="+referer_button;
+            };
 
+        // alert(referer_button);
+        $(this).attr('href', $(this).attr('href')+args);
+        return true;
+    });
+
+
+    var form = $('#main-contact-form');
+    form.submit(function(event){
+        event.preventDefault();
+        var form_status = $('<div class="form_status"></div>'),
+            phone_number = form.find("input[name=phone]").val(),
+            fio = form.find("input[name=fio]").val(),
+            offer_id = form.find("input[name=offer_id]").val(),
+            offer_info = form.find("[name=offer_info]").val(),
+            regex = /^\+\d\(\d\d\d\)\d\d\d\-\d\d\-\d\d$/;
+        if (!regex.exec(phone_number)) {
+            form.prepend( $('<div class="alert alert-danger fade in">'+
+                             '<h4>Введите, пожалуйста, корректный номер телефона в формате +7(999)000-00-00</h4></div>').fadeIn() );
+            try {
+                yaCounterMain.reachGoal('submitIncorrectPhone', {"order_price": form.attr("data-price"), "currency":"RUB", "offer_id": offer_id, "phone_number": phone_number});
+            } catch (err) {};
+            return;
+        };
+        $.ajax({
+            url: $(this).attr('action'),
+            method: "POST",
+            headers: {
+                "X-CSRFToken": form.find("input[name=csrfmiddlewaretoken]").val()
+            },
+            data: {
+                CSRF: form.find("input[name=csrfmiddlewaretoken]").val(),
+                phone: phone_number,
+                fio: fio,
+                offer_id: offer_id,
+                offer_info: offer_info,
+                page_id: form.find("input[name=page_id]").val(),
+                impression_id: form.find("input[name=impression_id]").val(),
+            },
+            beforeSend: function(){
+                form.find('.alert-danger').hide();
+                form.prepend( form_status.html('<p><i class="fa fa-spinner fa-spin"></i> Заказ отправляется...</p>').fadeIn() );
+            }
+        }).done(function(data){
+            form.replaceWith('<div class="alert alert-success fade in">'+
+                             '<h4><center>Спасибо за заказ.</center></h4>'+
+                             '<p>Номер вашего заказа: <strong>' + data.order_id +
+                             '</strong>.<br />В самое ближайшее время с вами свяжется наш менеджер и уточнит детали заказа и адрес доставки.<br />'+
+                             ' А пока желаем вам хорошего дня.</p>'+
+                             '</div>');
+            // try {
+            //  yaCounterMain.reachGoal('submitOrderSuccess', {"order_price": form.attr("data-price"), "currency":"RUB", "offer_id": offer_id, "order_id": data.order_id});
+            // } catch (err) {};
+        });
+        try {
+            yaCounterMain.reachGoal('submitOrder', {"order_price": form.attr("data-price"), "currency":"RUB", "offer_id": offer_id});
+        } catch (err) {};
+
+    });
+});
 /*=================================
 ||          Owl Carousel
 ==================================*/

@@ -175,8 +175,11 @@ body
 	margin-bottom: 25px;
 }
 
-input.empty, textarea.empty {
+input, textarea {
     font-family: FontAwesome;
+}
+
+input.empty, textarea.empty {
     font-style: normal;
     font-weight: normal;
     text-decoration: inherit;
@@ -525,7 +528,7 @@ nav.shrink .navbar-toggle {
 {
 	background-color: rgb(139, 195, 74);
 	color: #fff;
-	margin-top: -50px;
+	margin-top: -40px;
 	padding: 20px 40px;
 	border-radius: 4px;
 }

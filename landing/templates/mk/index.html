@@ -325,7 +325,8 @@
                     <div class=" section-content">
                         <div class="row">
                             <div class="col-md-5 col-sm-6">
-                                <form class="reservation-form" method="post" action="reserve.php">
+                                <form id="main-contact-form" class="reservation-form" method="post" action="/create-order" data-price="4390">
+                                    {% csrf_token %}
                                     <div class="row">
                                         <div class="col-md-6 col-sm-6">
                                             <div class="form-group">
@@ -335,12 +336,12 @@
 
                                         <div class="col-md-6 col-sm-6">
                                             <div class="form-group">
-                                                <input type="tel" class="form-control reserve-form empty iconified" name="phone" id="phone" required="required" placeholder="  &#xf095;  Телефон">
+                                                <input type="tel" class="form-control reserve-form empty iconified" name="phone" id="phone" required="required" placeholder="  &#xf095;  Телефон" data-mask="+7(000)000-00-00" data-mask-selectonfocus="true">
                                             </div>
                                         </div>
 
                                         <div class="col-md-12 col-sm-12">
-                                            <textarea type="text" name="message" class="form-control reserve-form empty iconified" id="message" rows="3" required="required" placeholder="  &#xf086;  Адрес доставки"></textarea>
+                                            <textarea type="text" name="offer_info" class="form-control reserve-form empty iconified" id="message" rows="3" placeholder="  &#xf086;  Адрес доставки"></textarea>
                                         </div>
 
                                         <div class="col-md-12 col-sm-12">
@@ -349,7 +350,10 @@
                                                 Заказать коврик
                                             </button>
                                         </div>
-                                            
+                            <input type="hidden" name="offer_id" value="1">
+                            <input type="hidden" name="page_id" value="{{ page.id }}">
+                            <input type="hidden" name="impression_id" value="{{ statistics.impression_id }}">
+
                                     </div>
                                 </form>
                             </div>
@@ -375,6 +379,12 @@
                         </div>
 
                     </div>
+                        {% if has_orders %}
+                        <div class="alert alert-warning fade in">
+                            <h4><center>Вы уже сделали заказ. Если хотите что-нибудь добавить, вы сможете это сделать, дождавшись звонка менеджера. Или позвоните нам по телефону: <a href="tel:+7(495)166-58-69">+7(495)166-58-69</a></center></h4>
+                        </div>
+                        {% endif %}
+
                 </div>
             </div>
         </section>
@@ -389,7 +399,8 @@
                     <div class="col-md-6 col-md-offset-3">
                         <div class="copyright text-center">
                             <p>
-                                &copy;&nbsp;2017{% now "Y" as now_year %}{% if not now_year == "2017" %}&nbsp;–&nbsp;{{ now_year }}{% endif %}&nbsp; <a href="http://sea.shop-for-baby.ru">Развивающий коврик «Подводный мир»</a>
+                                &copy;&nbsp;2017{% now "Y" as now_year %}{% if not now_year == "2017" %}&nbsp;–&nbsp;{{ now_year }}{% endif %}&nbsp; <a href="http://sea.shop-for-baby.ru">Развивающий коврик «Подводный мир»</a><br>
+                                Телефон для связи: <a href="tel:+7(495)166-58-69" style="color:#fff;">+7(495)166-58-69</a>
                             </p>
                         </div>
                     </div>
@@ -401,6 +412,7 @@
         <script src="{% static "mk/js/bootstrap.min.js" %}"></script>
         <script src="{% static "mk/js/owl.carousel.min.js" %}"></script>
         <script type="text/javascript" src="{% static "mk/js/jquery.mixitup.min.js" %}" ></script>
+        <script type="text/javascript" src="{% static "track1/js/jquery.mask.js" %}"></script>
         <script src="{% static "mk/js/wow.min.js" %}"></script>
         <script src="{% static "mk/js/jquery.validate.js" %}"></script>
         <script type="text/javascript" src="{% static "mk/js/jquery.hoverdir.js" %}"></script>
