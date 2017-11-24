@@ -188,6 +188,6 @@ $('.iconified').on('keyup', function() {
                 Scroll  Speed
 =======================================================*/
 
-$(function() {  
-    jQuery.scrollSpeed(100, 1000);
-});
+// $(function() {  
+//     jQuery.scrollSpeed(100, 1000);
+// });
