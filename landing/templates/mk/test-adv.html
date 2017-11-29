@@ -28,6 +28,29 @@
             });
         </script>
 
+        <script src="https://maps.googleapis.com/maps/api/js"></script>
+        <script>
+            function initialize() {
+                var mapCanvas = document.getElementById('map-canvas');
+                var mapOptions = {
+                    center: new google.maps.LatLng(24.909439, 91.833800),
+                    zoom: 16,
+                    scrollwheel: false,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                }
+                var map = new google.maps.Map(mapCanvas, mapOptions)
+
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(24.909439, 91.833800),
+                    title:"Mamma's Kitchen Restaurant"
+                });
+
+                // To add the marker to the map, call setMap();
+                marker.setMap(map);
+            }
+            google.maps.event.addDomListener(window, 'load', initialize);
+        </script>
+
         <link rel="shortcut icon" href="{% static "mk/images/favicon/favicon.ico" %}">
         <link rel="apple-touch-icon" sizes="57x57" href="{% static "mk/images/favicon/apple-icon-57x57.png" %}">
         <link rel="apple-touch-icon" sizes="60x60" href="{% static "mk/images/favicon/apple-icon-60x60.png" %}">
@@ -116,7 +139,7 @@
                     <div class="row dis-table">
                         <div class="col-sm-6 " style="padding: 30px 0;">
                             <div class="video-block">
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/fng7rdCjkw8?rel=0" frameborder="0" allowfullscreen></iframe>
+                                
                             </div>
                         </div>
                         <div class="col-sm-6 ">
