@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.contrib.postgres.fields import JSONField
 from django.utils.encoding import python_2_unicode_compatible
 
 
@@ -22,6 +23,25 @@ class Host(models.Model):
 @python_2_unicode_compatible
 class Page(models.Model):
     title = models.CharField(max_length=255)
+    # Название страницы
+    main_menu = models.CharField(max_length=255, blank=True, null=True)
+    # Телефон
+    phone_number = models.CharField(max_length=255, blank=True, null=True)
+    # Логотип
+    logo_url = models.CharField(max_length=255, blank=True, null=True)
+    # Полное описание
+    left_html = models.TextField(blank=True, null=True)
+    # Видео
+    right_html = models.TextField(blank=True, null=True)
+    # Характеристики
+    parameters = JSONField(blank=True, null=True)
+    # Текст в секции action1
+    action1_html = models.TextField(blank=True, null=True)
+    # Текст в секции action2
+    action2_html = models.TextField(blank=True, null=True)
+    # Вспомогательные страницы в меню
+    add_menu = JSONField(blank=True, null=True)
+
     url = models.CharField(max_length=255, blank=True)
     template = models.CharField(max_length=255)
     purpose = models.CharField(max_length=16, blank=True)
@@ -160,3 +180,64 @@ class Order(models.Model):
 
     class Meta:
         ordering = ('-created',)
+
+
+@python_2_unicode_compatible
+class Product(models.Model):
+    # Название
+    title = models.CharField(max_length=255, blank=True, null=True)
+    # Альтернативное название
+    alt_title = models.CharField(max_length=255, blank=True, null=True)
+    # Урл товара относительно страницы (если нет, то автоматический)
+    url = models.CharField(max_length=255, blank=True, null=True)
+    # Шаблон товара, если нет, то автоматом
+    template = models.CharField(max_length=255, blank=True, null=True)
+    # Конечная цена продажи без доставки
+    price = models.IntegerField(blank=True, null=True)
+    # Если нет, то из настроек сайта
+    delivery_price = models.IntegerField(blank=True, null=True)
+    # Главная картинка
+    main_image_url = models.CharField(max_length=255, blank=True, null=True)
+    # Вторая картинка
+    second_image_url = models.CharField(max_length=255, blank=True, null=True)
+    # Остальные картинки
+    images = JSONField(blank=True, null=True)
+    # Краткое описание
+    short_desc = models.TextField(blank=True, null=True)
+    # Полное описание
+    description = models.TextField(blank=True, null=True)
+    # Список фич
+    feature_desc = models.TextField(blank=True, null=True)
+    # Описание на странице заказа
+    order_desc = models.TextField(blank=True, null=True)
+    # Характеристики
+    parameters = JSONField(blank=True, null=True)
+    # Активный товар
+    active = models.BooleanField()
+    # Номер по порядку
+    ordering = models.IntegerField(blank=True, null=True)
+
+    page = models.ForeignKey(
+        'Page',
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self): # __unicode__ on Python 2
+        return "%s" % (self.title)
+
+    def image_urls(self):
+        urls = []
+        # if self.main_image_url:
+        #     urls.append(self.main_image_url)
+        # if self.second_image_url:
+        #     urls.append(self.second_image_url)
+        if isinstance(self.images, list):
+            for image in self.images:
+                if isinstance(image, dict) and "url" in image:
+                    urls.append(image["url"])
+        return urls
+
+    class Meta:
+        ordering = ('page', 'ordering',)
+        unique_together = ('url', 'page',)
+

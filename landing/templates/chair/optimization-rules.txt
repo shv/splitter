@@ -1,0 +1,9 @@
+smart.slider_title - текст заголовка в слайдере (может быть html)
+smart.services_1_title - название первой клетки
+smart.services_2_title - название второй клетки
+smart.services_3_title - название третьей клетки
+smart.prices_1_title - название первой позиции в прайсе
+smart.prices_2_title - название второй позиции в прайсе
+smart.prices_3_title - название третьей позиции в прайсе
+
+Нужна связь между страницами!!!!

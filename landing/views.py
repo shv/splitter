@@ -15,7 +15,7 @@ import uuid
 from django.http import HttpResponse, QueryDict, Http404, HttpResponseRedirect
 from django.db.models import Q
 from django.shortcuts import render
-from .models import Host, Page, CreativeGroup, Creative, CreativePart, Segment, LineItem, ABRule, Order
+from .models import Host, Page, CreativeGroup, Creative, CreativePart, Segment, LineItem, ABRule, Order, Product
 from django.conf import settings
 from django.views.decorators.cache import never_cache
 from jsonview.decorators import json_view
@@ -182,6 +182,9 @@ def landing(request, url):
         # Log: page id success loaded
     except Page.DoesNotExist:
         raise Http404("Poll does not exist")
+
+    content["products"] = Product.objects.filter(page=page, active=True).order_by('ordering').all()
+    logger.debug("Product list: %s", content["products"])
 
     creative = None
     # creative_id = request.GET.get('creative_id', request.COOKIES.get('creative_id_for_page_%s'%page.url))

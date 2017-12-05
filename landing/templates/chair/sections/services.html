@@ -1,0 +1,48 @@
+{% load static %}
+    <section id="services">
+        <div class="container">
+            <div class="row" style="margin-bottom: 0px;">
+                {% for product in products %}
+                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms" style="margin-bottom: 0px;">
+                    <div class="single-service">
+                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="300ms">
+                            <div class="portfolio-single">
+                                <div class="portfolio-thumb">
+                                    <img src="{{product.main_image_url}}" class="img-responsive offer" alt="">
+                                </div>
+                                <div class="portfolio-view">
+                                    <ul class="nav nav-pills">
+                                        <li><a href="{{product.main_image_url}}" data-lightbox="orders-set"><i class="fa fa-eye"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>{{product.title}}</h2>
+                        <p>{{product.short_desc}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div id="prices" class="row" style="margin-top: 10px;">
+
+                <div class="price-table" style="margin-top: 0px;">
+                    <div class="row">
+                        {% for product in products %}
+                        <div class="col-sm-6 col-md-4">
+                            <div class="single-price {{product.parameters.price_block_class | default:'price-one'}}">
+                                <div class="table-heading">
+                                    <p class="plan-name">{{product.alt_title | default:product.title}}</p>
+                                    <p class="plan-price"><span class="price">{{product.price | default:'0'}}</span><span class="month">руб</span></p>
+                                </div>
+                                {{product.feature_desc | default:""}}
+                                <a href="/offer-1.html" class="btn btn-buynow" data-referer-button="1">Купить</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/#services-->

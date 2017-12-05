@@ -1,0 +1,272 @@
+{# Заголовок #}
+{# Телефон #}
+{# Логотип #}
+{# Общее описание #}
+{# Видеоролик #}
+{# Краткая дополнительная инфа #}
+
+{# Товары #}
+{# Название #}
+{# Цена продажы #}
+{# Цена до скидки #}
+{# Цена с доставкой после скидки #}
+{# Главная картинка #}
+{# Вторая картинка #}
+{# Остальные картинки #}
+{# Краткое описание #}
+{# Полное описание #}
+{# Список характеристик #}
+
+{% extends 'chair/base.html' %}
+{% load static %}
+{% block content %}
+{% autoescape off %}
+    <section id="home-slider">
+        <div class="container animate-in">
+            <div class="row">
+                <div class="col-sm-6">
+                    {{page.left_html}}
+                </div>
+                <div class="col-sm-6">
+                    {{page.right_html}}
+                </div>
+            </div>
+        </div>
+        <div class="preloader"><i class="fa fa-sun-o fa-spin"></i></div>
+    </section>
+    <!--/#home-slider-->
+    <section id="action" class="responsive">
+        <div class="vertical-center">
+             <div class="container">
+                <div class="row">
+                    <div class="action take-tour">
+                        <div class="col-sm-12 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
+                            {{page.action1_html}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </section>
+    <section style="height:50px"></section>
+
+    {% if smart.sections_order %}
+        {% for section in smart.sections_order %}
+            {% with "chair/sections/"|add:section|add:".html" as template %}
+                {% include template %}
+            {% endwith %}
+        {% endfor %}
+    {% else %}
+        {% include "chair/sections/services.html" %}
+        {% include "chair/sections/action.html" %}
+        {% include "chair/sections/features.html" %}
+    {% endif %}
+
+    <section id="related-work" class="padding-top padding-bottom">
+        <div class="container">
+            <div class="row">
+                <h1 class="title text-center">Немного фотографий!</h1>
+                {% for product in products %}
+                    {% for image_url in product.image_urls %}
+                        <div class="col-sm-3">
+                            <div class="portfolio-wrapper">
+                                <div class="portfolio-single">
+                                    <div class="portfolio-thumb">
+                                        <img src="{{image_url}}" class="img-responsive" alt="">
+                                    </div>
+                                    <div class="portfolio-view">
+                                        <ul class="nav nav-pills">
+                                            <li><a href="{{image_url}}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="portfolio-info ">
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "chair/images/chair/0000027646_max_0000027646_1.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "chair/images/chair/0000027646_max_0000027646_1.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "chair/images/chair/0000027643_max_0000027643.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "chair/images/chair/0000027643_max_0000027643.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "chair/images/chair/1019777913.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "chair/images/chair/1019777913.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "chair/images/chair/0000027640_max_0000027640_1.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "chair/images/chair/0000027640_max_0000027640_1.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "chair/images/chair/58c8eceb29ec4.jpeg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "chair/images/chair/58c8eceb29ec4.jpeg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "chair/images/chair/2421_1.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "chair/images/chair/2421_1.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "chair/images/chair/6bd3d1f2d54a8d500e5f065e6796ec84.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "chair/images/chair/6bd3d1f2d54a8d500e5f065e6796ec84.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "chair/images/chair/2017-11-04_15-29-06.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "chair/images/chair/2017-11-04_15-29-06.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "chair/images/chair/3a542c0684a85bb2d7ef2eb0745bb468.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "chair/images/chair/3a542c0684a85bb2d7ef2eb0745bb468.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "chair/images/chair/maxresdefault-fire.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "chair/images/chair/maxresdefault-fire.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "chair/images/chair/maxresdefault.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "chair/images/chair/maxresdefault.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="price-two">
+                <a href="#prices" class="btn btn-buynow btn-hightlight">Заказать прямо сейчас</a>
+            </div>
+        </div>
+    </section>
+{% endautoescape %}
+{% endblock %}
