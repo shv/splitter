@@ -52,7 +52,7 @@ def create_order(request):
 
         result = {"status": "ok", "offer_id": request.POST["offer_id"], "order_id": order.id}
         if host.telegramm_token and host.telegramm_chat_id:
-            # try:
+            try:
                 send_to_telegramm("Сайт: {}.\nЗаказ на набор {}! {}\nИмя: {}. Телефон: {}. Номер заказа: {}.\nhttp://{}/admin/landing/order/{}/".format(
                         host.domain,
                         request.POST.get("offer_id", "-"),
@@ -66,8 +66,8 @@ def create_order(request):
                     telegramm_token=host.telegramm_token,
                     telegramm_chat_id=host.telegramm_chat_id
                 )
-            # except:
-                # logger.error("Can't send to telegramm")
+            except:
+                logger.error("Can't send to telegramm")
 
         ts = time.time()
         impression_id = request.POST.get('impression_id')
@@ -176,10 +176,16 @@ def landing(request, url):
         statistics["page"] = page.id
         # Log: page id success loaded
     except Page.DoesNotExist:
-        raise Http404("Poll does not exist")
+        raise Http404("Page does not exist")
 
-    content["products"] = Product.objects.filter(page=page, active=True).order_by('ordering').all()
-    logger.debug("Product list: %s", content["products"])
+    content["children"] = Page.objects.filter(parent_page=page).order_by('ordering').all()
+    # content["products"] = Product.objects.filter(page=page, active=True).order_by('ordering').all()
+    logger.debug("Product list: %s", content["children"])
+    content["main_page"] = page.parent_page
+    if content["main_page"] is None:
+        content["main_page"] = page
+    logger.debug("Main page: %s", content["main_page"])
+
 
     creative = None
     # creative_id = request.GET.get('creative_id', request.COOKIES.get('creative_id_for_page_%s'%page.url))

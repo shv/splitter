@@ -66,8 +66,8 @@
         <div class="container">
             <div class="row">
                 <h1 class="title text-center">Немного фотографий!</h1>
-                {% for product in products %}
-                    {% for image_url in product.image_urls %}
+                {% for child in children %}
+                    {% for image_url in child.product.image_urls %}
                         <div class="col-sm-3">
                             <div class="portfolio-wrapper">
                                 <div class="portfolio-single">

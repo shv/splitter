@@ -79,6 +79,20 @@ class Page(models.Model):
         'Host',
         on_delete=models.CASCADE,
     )
+    product = models.ForeignKey(
+        'Product',
+        on_delete=models.SET_NULL,
+        blank=True, null=True
+    )
+    # Номер по порядку
+    ordering = models.IntegerField(blank=True, null=True)
+
+    parent_page = models.ForeignKey(
+        'Page',
+        on_delete=models.SET_NULL,
+        blank=True, null=True
+    )
+
 
     def __str__(self):
         return "%s" % (self.title)
@@ -218,10 +232,6 @@ class Product(models.Model):
     title = models.CharField(max_length=255, blank=True, null=True)
     # Альтернативное название
     alt_title = models.CharField(max_length=255, blank=True, null=True)
-    # Урл товара относительно страницы (если нет, то автоматический)
-    url = models.CharField(max_length=255, blank=True, null=True)
-    # Шаблон товара, если нет, то автоматом
-    template = models.CharField(max_length=255, blank=True, null=True)
     # Конечная цена продажи без доставки
     price = models.IntegerField(blank=True, null=True)
     # Если нет, то из настроек сайта
@@ -242,18 +252,12 @@ class Product(models.Model):
     order_desc = models.TextField(blank=True, null=True)
     # Характеристики
     parameters = UTF8JSONField(blank=True, null=True)
-    # Активный товар
-    active = models.BooleanField()
-    # Номер по порядку
-    ordering = models.IntegerField(blank=True, null=True)
-
-    page = models.ForeignKey(
-        'Page',
-        on_delete=models.CASCADE,
-    )
 
     def __str__(self): # __unicode__ on Python 2
         return "%s" % (self.title)
+
+    def full_price(self):
+        return self.price + self.delivery_price
 
     def image_urls(self):
         urls = []
@@ -267,7 +271,7 @@ class Product(models.Model):
                     urls.append(image["url"])
         return urls
 
-    class Meta:
-        ordering = ('page', 'ordering',)
-        unique_together = ('url', 'page',)
+    # class Meta:
+        # ordering = ('ordering',)
+        # unique_together = ('url', 'page',)
 
