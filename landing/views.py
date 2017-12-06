@@ -7,10 +7,8 @@ import logging
 # import pytelegrambotapi
 import re
 import time
-import urllib
-import urllib2
 import uuid
-
+import requests
 
 from django.http import HttpResponse, QueryDict, Http404, HttpResponseRedirect
 from django.db.models import Q
@@ -28,11 +26,8 @@ def send_to_telegramm(text, telegramm_token=None, telegramm_chat_id=None):
     if telegramm_token and telegramm_chat_id:
         telegramm_url = 'https://api.telegram.org/bot{}/sendMessage'.format(telegramm_token)
         values = { 'chat_id': telegramm_chat_id,'text': text.encode('utf-8')}
-        data = urllib.urlencode(values)
-        req = urllib2.Request(telegramm_url, data)
-        resp = urllib2.urlopen(req)
-        result = resp.read()
-        logger.debug("Message sent to telegramm")
+        resp = requests.post(telegramm_url, data=values, verify=False)
+        logger.debug("Message sent to telegramm.")
 
 
 @never_cache
@@ -57,7 +52,7 @@ def create_order(request):
 
         result = {"status": "ok", "offer_id": request.POST["offer_id"], "order_id": order.id}
         if host.telegramm_token and host.telegramm_chat_id:
-            try:
+            # try:
                 send_to_telegramm("Сайт: {}.\nЗаказ на набор {}! {}\nИмя: {}. Телефон: {}. Номер заказа: {}.\nhttp://{}/admin/landing/order/{}/".format(
                         host.domain,
                         request.POST.get("offer_id", "-"),
@@ -71,8 +66,8 @@ def create_order(request):
                     telegramm_token=host.telegramm_token,
                     telegramm_chat_id=host.telegramm_chat_id
                 )
-            except:
-                pass
+            # except:
+                # logger.error("Can't send to telegramm")
 
         ts = time.time()
         impression_id = request.POST.get('impression_id')

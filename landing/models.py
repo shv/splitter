@@ -6,29 +6,34 @@ from django.contrib.postgres.fields import JSONField
 from django.utils.encoding import python_2_unicode_compatible
 
 # Фикс кодировки JSON полей в админке для питона 3
-# import json
-# from django.contrib.postgres.forms.jsonb import (
-#     InvalidJSONInput,
-#     JSONField as JSONFormField,
-# )
-
-# class UTF8JSONFormField(JSONFormField):
-
-#     def prepare_value(self, value):
-#         if isinstance(value, InvalidJSONInput):
-#             return value
-#         return json.dumps(value, ensure_ascii=False)
+import json
+from django.contrib.postgres.forms.jsonb import (
+    InvalidJSONInput,
+    JSONField as JSONFormField,
+)
 
 
-# class UTF8JSONField(JSONField):
-#     """JSONField for postgres databases.
+class UTF8JSONFormField(JSONFormField):
 
-#     Displays UTF-8 characters directly in the admin, i.e. äöü instead of
-#     unicode escape sequences.
-#     """
+    def prepare_value(self, value):
+        if isinstance(value, InvalidJSONInput):
+            return value
+        return json.dumps(value, ensure_ascii=False)
 
-#     def formfield(self, **kwargs):
-#         return super().formfield(**{**{'form_class': UTF8JSONFormField},**kwargs,})
+
+class UTF8JSONField(JSONField):
+    """JSONField for postgres databases.
+
+    Displays UTF-8 characters directly in the admin, i.e. äöü instead of
+    unicode escape sequences.
+    """
+
+    def formfield(self, **kwargs):
+        return super().formfield(**{
+            **{'form_class': UTF8JSONFormField},
+            **kwargs,
+        })
+
 
 @python_2_unicode_compatible
 class Host(models.Model):
@@ -59,13 +64,13 @@ class Page(models.Model):
     # Видео
     right_html = models.TextField(blank=True, null=True)
     # Характеристики
-    parameters = JSONField(blank=True, null=True)
+    parameters = UTF8JSONField(blank=True, null=True)
     # Текст в секции action1
     action1_html = models.TextField(blank=True, null=True)
     # Текст в секции action2
     action2_html = models.TextField(blank=True, null=True)
     # Вспомогательные страницы в меню
-    add_menu = JSONField(blank=True, null=True)
+    add_menu = UTF8JSONField(blank=True, null=True)
 
     url = models.CharField(max_length=255, blank=True)
     template = models.CharField(max_length=255)
@@ -226,7 +231,7 @@ class Product(models.Model):
     # Вторая картинка
     second_image_url = models.CharField(max_length=255, blank=True, null=True)
     # Остальные картинки
-    images = JSONField(blank=True, null=True)
+    images = UTF8JSONField(blank=True, null=True)
     # Краткое описание
     short_desc = models.TextField(blank=True, null=True)
     # Полное описание
@@ -236,7 +241,7 @@ class Product(models.Model):
     # Описание на странице заказа
     order_desc = models.TextField(blank=True, null=True)
     # Характеристики
-    parameters = JSONField(blank=True, null=True)
+    parameters = UTF8JSONField(blank=True, null=True)
     # Активный товар
     active = models.BooleanField()
     # Номер по порядку
