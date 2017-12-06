@@ -64,9 +64,11 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="tel:{{page.phone_number}}" style="font-size: 16px;padding-top: 18px;">{{page.phone_number}}</a></li>
-                        <li class="{%if page.url == ''%}active{%endif%}"><a href="/" data-referer-button="menu-main">{{page.main_menu}}</a></li>
-                        <li class="{%if page.url == 'about.html'%}active{%endif%}"><a href="/video.html" data-referer-button="menu-about">Видеоролики</a>
+                        <li><a href="tel:{{page.phone_number}}" style="font-size: 16px;padding-top: 18px;">{{ page.phone_number }}</a></li>
+                        <li class="{%if page.url == ''%}active{%endif%}"><a href="/" data-referer-button="menu-main">{{ page.main_menu }}</a></li>
+                        {% for add_menu in page.add_menu %}
+                        <li class="{% if page.url == add_menu.url %}active{%endif%}"><a href="{{add_menu.url}}" data-referer-button="menu-about">{{add_menu.title}}</a>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
@@ -92,7 +94,7 @@
             (w[c] = w[c] || []).push(function() {
                 try {
                     w.yaCounterMain = new Ya.Metrika({
-                        id:{% if host.domain == 'track.worldmaker.ru' %}46616838{% else %}44839867{% endif %},
+                        id:{{ host.yandex_metrica_id | default:"44839867" }},
                         clickmap:true,
                         trackLinks:true,
                         accurateTrackBounce:true,

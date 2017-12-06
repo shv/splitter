@@ -5,6 +5,30 @@ from django.db import models
 from django.contrib.postgres.fields import JSONField
 from django.utils.encoding import python_2_unicode_compatible
 
+# Фикс кодировки JSON полей в админке для питона 3
+# import json
+# from django.contrib.postgres.forms.jsonb import (
+#     InvalidJSONInput,
+#     JSONField as JSONFormField,
+# )
+
+# class UTF8JSONFormField(JSONFormField):
+
+#     def prepare_value(self, value):
+#         if isinstance(value, InvalidJSONInput):
+#             return value
+#         return json.dumps(value, ensure_ascii=False)
+
+
+# class UTF8JSONField(JSONField):
+#     """JSONField for postgres databases.
+
+#     Displays UTF-8 characters directly in the admin, i.e. äöü instead of
+#     unicode escape sequences.
+#     """
+
+#     def formfield(self, **kwargs):
+#         return super().formfield(**{**{'form_class': UTF8JSONFormField},**kwargs,})
 
 @python_2_unicode_compatible
 class Host(models.Model):
@@ -12,6 +36,7 @@ class Host(models.Model):
     domain = models.CharField(max_length=255, unique=True)
     telegramm_token = models.CharField(max_length=255, blank=True)
     telegramm_chat_id = models.CharField(max_length=255, blank=True)
+    yandex_metrica_id = models.CharField(max_length=255, blank=True)
 
     def __str__(self):
         return "%s" % (self.domain)
