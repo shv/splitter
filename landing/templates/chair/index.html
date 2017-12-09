@@ -24,6 +24,13 @@
 {% autoescape off %}
     <section id="home-slider">
         <div class="container animate-in">
+            {% if page.title %}
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h1>{{page.title}}</h1>
+                    </div>
+                </div>
+            {% endif %}
             <div class="row">
                 {% if page.left_html and page.right_html %}
                     <div class="col-sm-6">

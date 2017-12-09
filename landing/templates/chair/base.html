@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{% block meta_description %}Игровые наборы Гибкий трек.{% endblock %}">
     <meta name="author" content="">
-    <title>{% block meta_title %}{{page.main_menu | default:main_page.main_menu}}{% endblock %}</title>
+    <title>{% block meta_title %}{{page.title | default:main_page.title}}{% endblock %}</title>
     <script>var sessionid = "{{ request.session.session_key }}", impression_id = "{{ statistics.impression_id }}";</script>
 
     <link href="{% static "track1/css/bootstrap.min.css" %}" rel="stylesheet">
