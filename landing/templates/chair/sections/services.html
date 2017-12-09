@@ -1,9 +1,10 @@
 {% load static %}
+{% load mathfilters %}
     <section id="services">
         <div class="container">
             <div class="row" style="margin-bottom: 0px;">
                 {% for child in children %}
-                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms" style="margin-bottom: 0px;">
+                <div class="col-sm-{{12 | intdiv:children.count}} text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms" style="margin-bottom: 0px;">
                     <div class="single-service">
                         <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="300ms">
                             <div class="portfolio-single">
@@ -29,7 +30,7 @@
                 <div class="price-table" style="margin-top: 0px;">
                     <div class="row">
                         {% for child in children %}
-                        <div class="col-sm-6 col-md-4">
+                        <div class="col-sm-{{12 | intdiv:children.count}} col-md-{{12 | div:children.count}}">
                             <div class="single-price {{child.product.parameters.price_block_class | default:'price-one'}}">
                                 <div class="table-heading">
                                     <p class="plan-name">{{child.product.alt_title | default:child.product.title}}</p>

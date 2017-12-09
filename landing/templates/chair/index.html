@@ -19,17 +19,31 @@
 
 {% extends 'chair/base.html' %}
 {% load static %}
+{% load mathfilters %}
 {% block content %}
 {% autoescape off %}
     <section id="home-slider">
         <div class="container animate-in">
             <div class="row">
-                <div class="col-sm-6">
-                    {{page.left_html}}
-                </div>
-                <div class="col-sm-6">
-                    {{page.right_html}}
-                </div>
+                {% if page.left_html and page.right_html %}
+                    <div class="col-sm-6">
+                        {{page.left_html}}
+                    </div>
+                    <div class="col-sm-6">
+                        {{page.right_html}}
+                    </div>
+                {% else %}
+                    {% if page.left_html %}
+                        <div class="col-sm-12">
+                            {{page.left_html}}
+                        </div>
+                    {% endif %}
+                    {% if page.right_html %}
+                        <div class="col-sm-12">
+                            {{page.right_html}}
+                        </div>
+                    {% endif %}
+                {% endif %}
             </div>
         </div>
         <div class="preloader"><i class="fa fa-sun-o fa-spin"></i></div>

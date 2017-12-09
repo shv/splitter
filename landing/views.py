@@ -178,7 +178,7 @@ def landing(request, url):
     except Page.DoesNotExist:
         raise Http404("Page does not exist")
 
-    content["children"] = Page.objects.filter(parent_page=page).order_by('ordering').all()
+    content["children"] = Page.objects.filter(parent_page=page, product__isnull=False).order_by('ordering').all()[:3]
     # content["products"] = Product.objects.filter(page=page, active=True).order_by('ordering').all()
     logger.debug("Product list: %s", content["children"])
     content["main_page"] = page.parent_page
