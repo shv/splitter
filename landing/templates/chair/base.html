@@ -64,7 +64,7 @@
                 </div>
                 {% if page.phone_number or main_page.phone_number %}
                     <div class="navbar-toggle" style="border:none;float:none;">
-                        <center>Звоните: <a href="tel:{{page.phone_number | default:main_page.phone_number}}" style="font-size: 26px;padding-top: 18px;">{{ page.phone_number | default:main_page.phone_number }}</a></center>
+                        <center><a href="tel:{{page.phone_number | default:main_page.phone_number}}" style="font-size: 26px;padding-top: 18px;">{{ page.phone_number | default:main_page.phone_number }}</a></center>
                     </div>
                 {% endif %}
                 <div class="collapse navbar-collapse">
