@@ -8,39 +8,39 @@
     <title>{% block meta_title %}{{page.title | default:main_page.title}}{% endblock %}</title>
     <script>var sessionid = "{{ request.session.session_key }}", impression_id = "{{ statistics.impression_id }}";</script>
 
-    <link href="{% static "track1/css/bootstrap.min.css" %}" rel="stylesheet">
-    <link href="{% static "track1/css/font-awesome.min.css" %}" rel="stylesheet">
-    <link href="{% static "track1/css/animate.min.css" %}" rel="stylesheet"> 
-    <link href="{% static "track1/css/lightbox.css" %}" rel="stylesheet"> 
-	<link href="{% static "track1/css/main.css" %}" rel="stylesheet">
-	<link href="{% static "track1/css/responsive.css" %}" rel="stylesheet">
+    <link href="{% static "chair/css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "chair/css/font-awesome.min.css" %}" rel="stylesheet">
+    <link href="{% static "chair/css/animate.min.css" %}" rel="stylesheet"> 
+    <link href="{% static "chair/css/lightbox.css" %}" rel="stylesheet"> 
+	<link href="{% static "chair/css/main.css" %}" rel="stylesheet">
+	<link href="{% static "chair/css/responsive.css" %}" rel="stylesheet">
 
     <!--[if lt IE 9]>
 	    <script src="js/html5shiv.js"></script>
 	    <script src="js/respond.min.js"></script>
     <![endif]-->       
-    <link rel="shortcut icon" href="{% static "track1/images/favicon/favicon.ico" %}">
-    <link rel="apple-touch-icon" sizes="57x57" href="{% static "track1/images/favicon/apple-icon-57x57.png" %}">
-    <link rel="apple-touch-icon" sizes="60x60" href="{% static "track1/images/favicon/apple-icon-60x60.png" %}">
-    <link rel="apple-touch-icon" sizes="72x72" href="{% static "track1/images/favicon/apple-icon-72x72.png" %}">
-    <link rel="apple-touch-icon" sizes="76x76" href="{% static "track1/images/favicon/apple-icon-76x76.png" %}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{% static "track1/images/favicon/apple-icon-114x114.png" %}">
-    <link rel="apple-touch-icon" sizes="120x120" href="{% static "track1/images/favicon/apple-icon-120x120.png" %}">
-    <link rel="apple-touch-icon" sizes="144x144" href="{% static "track1/images/favicon/apple-icon-144x144.png" %}">
-    <link rel="apple-touch-icon" sizes="152x152" href="{% static "track1/images/favicon/apple-icon-152x152.png" %}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static "track1/images/favicon/apple-icon-180x180.png" %}">
-    <link rel="icon" type="image/png" sizes="192x192"  href="{% static "track1/images/favicon/android-icon-192x192.png" %}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static "track1/images/favicon/favicon-32x32.png" %}">
-    <link rel="icon" type="image/png" sizes="96x96" href="{% static "track1/images/favicon/favicon-96x96.png" %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static "track1/images/favicon/favicon-16x16.png" %}">
-    <link rel="manifest" href="{% static "track1/images/favicon/manifest.json" %}">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static "track1/images/favicon/apple-icon-144x144.png" %}">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static "track1/images/favicon/apple-icon-114x114.png" %}">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static "track1/images/favicon/apple-icon-72x72.png" %}">
-    <link rel="apple-touch-icon-precomposed" href="{% static "track1/images/favicon/apple-icon-57x57.png" %}">
+    <link rel="shortcut icon" href="{% static "chair/images/favicon/favicon.ico" %}">
+    <link rel="apple-touch-icon" sizes="57x57" href="{% static "chair/images/favicon/apple-icon-57x57.png" %}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{% static "chair/images/favicon/apple-icon-60x60.png" %}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static "chair/images/favicon/apple-icon-72x72.png" %}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static "chair/images/favicon/apple-icon-76x76.png" %}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static "chair/images/favicon/apple-icon-114x114.png" %}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{% static "chair/images/favicon/apple-icon-120x120.png" %}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{% static "chair/images/favicon/apple-icon-144x144.png" %}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{% static "chair/images/favicon/apple-icon-152x152.png" %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static "chair/images/favicon/apple-icon-180x180.png" %}">
+    <link rel="icon" type="image/png" sizes="192x192"  href="{% static "chair/images/favicon/android-icon-192x192.png" %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static "chair/images/favicon/favicon-32x32.png" %}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static "chair/images/favicon/favicon-96x96.png" %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static "chair/images/favicon/favicon-16x16.png" %}">
+    <link rel="manifest" href="{% static "chair/images/favicon/manifest.json" %}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static "chair/images/favicon/apple-icon-144x144.png" %}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static "chair/images/favicon/apple-icon-114x114.png" %}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static "chair/images/favicon/apple-icon-72x72.png" %}">
+    <link rel="apple-touch-icon-precomposed" href="{% static "chair/images/favicon/apple-icon-57x57.png" %}">
 
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="{% static "track1/images/favicon/ms-icon-144x144.png" %}">
+    <meta name="msapplication-TileImage" content="{% static "chair/images/favicon/ms-icon-144x144.png" %}">
     <meta name="theme-color" content="#ffffff">
 
 </head><!--/head-->
@@ -63,8 +63,8 @@
                     
                 </div>
                 {% if page.phone_number or main_page.phone_number %}
-                    <div class="navbar-toggle" style="border:none;">
-                        <a href="tel:{{page.phone_number | default:main_page.phone_number}}" style="font-size: 26px;padding-top: 18px;">{{ page.phone_number | default:main_page.phone_number }}</a>
+                    <div class="navbar-toggle" style="border:none;float:none;">
+                        <center>Звоните: <a href="tel:{{page.phone_number | default:main_page.phone_number}}" style="font-size: 26px;padding-top: 18px;">{{ page.phone_number | default:main_page.phone_number }}</a></center>
                     </div>
                 {% endif %}
                 <div class="collapse navbar-collapse">
@@ -84,12 +84,12 @@
     <!--/#header-->
     {% block content %}{% endblock %}
 
-    <script type="text/javascript" src="{% static "track1/js/jquery.js" %}"></script>
-    <script type="text/javascript" src="{% static "track1/js/bootstrap.min.js" %}"></script>
-    <script type="text/javascript" src="{% static "track1/js/lightbox.min.js" %}"></script>
-    <script type="text/javascript" src="{% static "track1/js/jquery.mask.js" %}"></script>
-    <script type="text/javascript" src="{% static "track1/js/wow.min.js" %}"></script>
-    <script type="text/javascript" src="{% static "track1/js/main.js" %}"></script>
+    <script type="text/javascript" src="{% static "chair/js/jquery.js" %}"></script>
+    <script type="text/javascript" src="{% static "chair/js/bootstrap.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "chair/js/lightbox.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "chair/js/jquery.mask.js" %}"></script>
+    <script type="text/javascript" src="{% static "chair/js/wow.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "chair/js/main.js" %}"></script>
     {% if not preview %}
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
