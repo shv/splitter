@@ -31,7 +31,7 @@
                     <div class="row">
                         {% for child in children %}
                         <div class="col-sm-{{12 | intdiv:children.count}} col-md-{{12 | div:children.count}}">
-                            <div class="single-price {{child.product.parameters.price_block_class | default:'price-one'}}">
+                            <div class="single-price {{child.parameters.price_block_class | default:'price-one'}}">
                                 <div class="table-heading">
                                     <p class="plan-name">{{child.product.alt_title | default:child.product.title}}</p>
                                     <p class="plan-price"><span class="price">{{child.product.price | default:'0'}}</span><span class="month">руб</span></p>

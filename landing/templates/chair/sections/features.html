@@ -4,7 +4,7 @@
             <div class="row">
                 {% for child in children %}
                 <div class="single-features">
-                    {% if child.product.parameters.feature_position == 'right' %}
+                    {% if child.parameters.feature_position == 'right' %}
                     <div class="col-sm-6 col-sm-offset-1 align-right wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
                         <h2>{{child.product.title}}</h2>
                         {{child.product.description}}
