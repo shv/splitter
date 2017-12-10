@@ -1,5 +1,6 @@
 {% extends 'chair/base.html' %}
 {% block content %}
+{% autoescape off %}
 <section id="page-breadcrumb">
     <div class="vertical-center sun">
          <div class="container">
@@ -23,4 +24,5 @@
         </div>
     </div>
 </div>
+{% endautoescape %}
 {% endblock %}
