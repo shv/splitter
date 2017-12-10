@@ -37,7 +37,7 @@
                         </form>
                         {{page.product.order_desc}}
 
-                        <p>Стоимость: <strong>{{page.product.price | default:'0'}}</strong> руб. Адрес доставки, пожалуйста, сообщите по телефону.</p>
+                        <p>Стоимость: <strong>{{page.product.price | default:'0'}}</strong> руб.</p>
                         {% if page.product.full_price != page.product.price  %}
                         <p>Цена с доставкой <strong>{{page.product.full_price | default:'0'}}</strong> руб.</p>
                         {% else %}
