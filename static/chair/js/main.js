@@ -80,14 +80,16 @@ jQuery(function($) {'use strict';
 		event.preventDefault();
 		var form_status = $('<div class="form_status"></div>'),
 			phone_number = form.find("input[name=phone]").val(),
-			offer_id = form.find("input[name=offer_id]").val(),
+			fio = form.find("input[name=fio]").val(),
+			adress = form.find("input[name=adress]").val(),
+			product_id = form.find("input[name=product_id]").val(),
 			offer_info = form.find("input[name=offer_info]").val(),
 			regex = /^\+\d\(\d\d\d\)\d\d\d\-\d\d\-\d\d$/;
 		if (!regex.exec(phone_number)) {
 			form.prepend( $('<div class="alert alert-danger fade in">'+
                              '<h4>Введите, пожалуйста, корректный номер телефона в формате +7(999)000-00-00</h4></div>').fadeIn() );
 			try {
-				yaCounterMain.reachGoal('submitIncorrectPhone', {"order_price": form.attr("data-price"), "currency":"RUB", "offer_id": offer_id, "phone_number": phone_number});
+				yaCounterMain.reachGoal('submitIncorrectPhone', {"order_price": form.attr("data-price"), "currency":"RUB", "product_id": product_id, "phone_number": phone_number});
 			} catch (err) {};
 			return;
 		};
@@ -100,7 +102,9 @@ jQuery(function($) {'use strict';
 			data: {
 				CSRF: form.find("input[name=csrfmiddlewaretoken]").val(),
 				phone: phone_number,
-				offer_id: offer_id,
+				fio: fio,
+				adress: adress,
+				product_id: product_id,
 				offer_info: offer_info,
 				page_id: form.find("input[name=page_id]").val(),
 				impression_id: form.find("input[name=impression_id]").val(),
@@ -121,7 +125,7 @@ jQuery(function($) {'use strict';
 			// } catch (err) {};
 		});
 		try {
-			yaCounterMain.reachGoal('submitOrder', {"order_price": form.attr("data-price"), "currency":"RUB", "offer_id": offer_id});
+			yaCounterMain.reachGoal('submitOrder', {"order_price": form.attr("data-price"), "currency":"RUB", "product_id": product_id});
 		} catch (err) {};
 
 	});

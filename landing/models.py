@@ -200,10 +200,19 @@ class ABRule(models.Model):
 @python_2_unicode_compatible
 class Order(models.Model):
     phone = models.CharField(max_length=255)
+    fio = models.CharField(max_length=255, blank=True, null=True)
+    adress = models.CharField(max_length=255, blank=True, null=True)
     description = models.TextField()
     session_id = models.CharField(max_length=255, blank=True)
     status = models.CharField(max_length=255)
     created = models.DateTimeField(auto_now_add=True, blank=True)
+    product = models.ForeignKey(
+        'Product',
+        on_delete=models.SET_NULL,
+        blank=True,
+        default=None,
+        null=True
+    )
     host = models.ForeignKey(
         'Host',
         on_delete=models.SET_NULL,

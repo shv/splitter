@@ -39,9 +39,17 @@ def create_order(request):
         except Host.DoesNotExist:
             raise Http404("Domain does not exist")
 
-        description = "Offer_id: {}. Name: {}. Info: {}".format(request.POST.get("offer_id", "-"), request.POST.get("fio", "-"), request.POST.get("offer_info", ""))
+        description = "Product_id: {}. Info: {}".format(request.POST.get("product_id", "-"), request.POST.get("offer_info", ""))
+        try:
+            product = Product.objects.get(id=request.POST.get("product_id"))
+        except Product.DoesNotExist:
+            product = None
+
         order = Order.objects.create(
             phone=request.POST.get("phone"),
+            fio=request.POST.get("fio"),
+            adress=request.POST.get("adress"),
+            product=product,
             description=description,
             status="new",
             session_id=request.session.session_key,
@@ -50,12 +58,12 @@ def create_order(request):
         )
         logger.debug(request.POST.get("page_id"))
 
-        result = {"status": "ok", "offer_id": request.POST["offer_id"], "order_id": order.id}
+        result = {"status": "ok", "product_id": request.POST["product_id"], "order_id": order.id}
         if host.telegramm_token and host.telegramm_chat_id:
             try:
                 send_to_telegramm("Сайт: {}.\nЗаказ на набор {}! {}\nИмя: {}. Телефон: {}. Номер заказа: {}.\nhttp://{}/admin/landing/order/{}/".format(
                         host.domain,
-                        request.POST.get("offer_id", "-"),
+                        request.POST.get("product_id", "-"),
                         request.POST.get("offer_info", ""),
                         request.POST.get("fio", "-"),
                         request.POST.get("phone", "-"),
@@ -83,7 +91,7 @@ def create_order(request):
             "preview": preview,
             "cookies": request.COOKIES,
             "query_string": request.META['QUERY_STRING'],
-            "offer_id": request.POST["offer_id"],
+            "product_id": request.POST["product_id"],
             "phone": request.POST["phone"],
             "order_id": result["order_id"],
         }
