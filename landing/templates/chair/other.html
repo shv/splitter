@@ -1,0 +1,26 @@
+{% extends 'chair/base.html' %}
+{% block content %}
+<section id="page-breadcrumb">
+    <div class="vertical-center sun">
+         <div class="container">
+            <div class="row">
+                <div class="action">
+                    <div class="col-sm-12">
+                        <h1 class="title">{{page.title}}</h1>
+                        <p>{{page.action1_html}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container">
+    {{page.action2_html}}
+    <div class="row" style="margin-bottom: 50px;">
+        <h1><center>Нравится?</center></h1>
+        <div class="price-two">
+            <a href="/{{ main_page.url }}#services" class="btn btn-buynow btn-hightlight">Закажите прямо сейчас</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
