@@ -5,12 +5,24 @@ from django.contrib import admin
 from .models import Host, Page, CreativeGroup, Creative, CreativePart, Segment, LineItem, ABRule, Order, Product
 
 admin.site.register(Host)
-admin.site.register(Page)
 admin.site.register(CreativeGroup)
 admin.site.register(Creative)
 admin.site.register(CreativePart)
 admin.site.register(Segment)
 admin.site.register(LineItem)
 admin.site.register(ABRule)
-admin.site.register(Order)
-admin.site.register(Product)
+
+
+class OrderAdmin(admin.ModelAdmin):
+	list_display = ('id', 'status', 'phone', 'fio', 'product', 'description')
+
+class PageAdmin(admin.ModelAdmin):
+	list_display = ('id', 'host', 'url', 'parent_page', 'product', 'title')
+
+class ProductAdmin(admin.ModelAdmin):
+	list_display = ('id', 'title', 'price', 'delivery_price', 'full_price')
+
+
+admin.site.register(Order, OrderAdmin)
+admin.site.register(Page, PageAdmin)
+admin.site.register(Product, ProductAdmin)
