@@ -15,9 +15,11 @@ admin.site.register(ABRule)
 
 class OrderAdmin(admin.ModelAdmin):
 	list_display = ('id', 'status', 'phone', 'fio', 'host', 'page', 'product')
+	list_filter = ('status', 'host', 'page', 'product')
 
 class PageAdmin(admin.ModelAdmin):
 	list_display = ('id', 'host', 'url', 'parent_page', 'product', 'title')
+	list_filter = ('host', 'parent_page', 'product')
 
 class ProductAdmin(admin.ModelAdmin):
 	list_display = ('id', 'title', 'price', 'delivery_price', 'full_price')
