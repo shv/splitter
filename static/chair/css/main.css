@@ -272,6 +272,7 @@
 #header .navbar-brand{
   padding: 0;
   margin-left: 0;
+  display: table;
 }
 
 #header .navbar-brand h1{

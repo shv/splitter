@@ -56,17 +56,16 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-
-                    <a class="navbar-brand" href="/{{ main_page.url }}" data-referer-button="logo">
-                        <h1><img height="64" src="{{page.logo_url | default:main_page.logo_url}}" alt="logo" class="logo"></h1>
-                    </a>
-                    
-                </div>
                 {% if page.phone_number or main_page.phone_number %}
                     <div class="navbar-toggle" style="border:none;float:none;">
                         <center><a href="tel:{{page.phone_number | default:main_page.phone_number}}" style="font-size: 26px;padding-top: 18px;">{{ page.phone_number | default:main_page.phone_number }}</a></center>
                     </div>
                 {% endif %}
+                    <a class="navbar-brand" href="/{{ main_page.url }}" data-referer-button="logo">
+                        <h1><img height="64" src="{{page.logo_url | default:main_page.logo_url}}" alt="logo" class="logo"></h1>
+                    </a>
+                    
+                </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         {% if page.phone_number or main_page.phone_number %}
