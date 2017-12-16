@@ -49,6 +49,7 @@ def create_order(request):
             phone=request.POST.get("phone"),
             fio=request.POST.get("fio"),
             adress=request.POST.get("adress"),
+            color=request.POST.get("color"),
             product=product,
             description=description,
             status="new",
@@ -61,9 +62,10 @@ def create_order(request):
         result = {"status": "ok", "product_id": request.POST["product_id"], "order_id": order.id}
         if host.telegramm_token and host.telegramm_chat_id:
             try:
-                send_to_telegramm("Сайт: {}.\nЗаказ на набор {}! {}\nИмя: {}. Телефон: {}. Номер заказа: {}.\nhttp://{}/admin/landing/order/{}/".format(
+                send_to_telegramm("Сайт: {}.\nЗаказ на товара {}! Цвет: {} {}\nИмя: {}. Телефон: {}. Номер заказа: {}.\nhttp://{}/admin/landing/order/{}/".format(
                         host.domain,
                         request.POST.get("product_id", "-"),
+                        request.POST.get("color", "-"),
                         request.POST.get("offer_info", ""),
                         request.POST.get("fio", "-"),
                         request.POST.get("phone", "-"),

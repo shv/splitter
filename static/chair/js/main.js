@@ -84,12 +84,13 @@ jQuery(function($) {'use strict';
 			adress = form.find("input[name=adress]").val(),
 			product_id = form.find("input[name=product_id]").val(),
 			offer_info = form.find("input[name=offer_info]").val(),
+			color = form.find("select[name=color]").val(),
 			regex = /^\+\d\(\d\d\d\)\d\d\d\-\d\d\-\d\d$/;
 		if (!regex.exec(phone_number)) {
 			form.prepend( $('<div class="alert alert-danger fade in">'+
                              '<h4>Введите, пожалуйста, корректный номер телефона в формате +7(999)000-00-00</h4></div>').fadeIn() );
 			try {
-				yaCounterMain.reachGoal('submitIncorrectPhone', {"order_price": form.attr("data-price"), "currency":"RUB", "product_id": product_id, "phone_number": phone_number});
+				yaCounterMain.reachGoal('submitIncorrectPhone', {"order_price": form.attr("data-price"), "currency":"RUB", "product_id": product_id, "phone_number": phone_number, "color": color});
 			} catch (err) {};
 			return;
 		};
@@ -106,6 +107,7 @@ jQuery(function($) {'use strict';
 				adress: adress,
 				product_id: product_id,
 				offer_info: offer_info,
+				color: color,
 				page_id: form.find("input[name=page_id]").val(),
 				impression_id: form.find("input[name=impression_id]").val(),
 			},
@@ -129,6 +131,14 @@ jQuery(function($) {'use strict';
 		} catch (err) {};
 
 	});
+	// Select color
+    $("select[name=color]").change(function(){
+    	var img = $("img.main-image"),
+    	  new_img_id = $(this).val(),
+    	  new_img_url = img.attr("data-url-" + new_img_id);
+    	img.attr("src", new_img_url);
+    });
+
 
 	// Progress Bar
 	$.each($('div.progress-bar'),function(){

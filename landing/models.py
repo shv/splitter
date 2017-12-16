@@ -202,6 +202,7 @@ class Order(models.Model):
     phone = models.CharField(max_length=255)
     fio = models.CharField(max_length=255, blank=True, null=True)
     adress = models.CharField(max_length=255, blank=True, null=True)
+    color = models.CharField(max_length=255, blank=True, null=True)
     description = models.TextField()
     session_id = models.CharField(max_length=255, blank=True)
     status = models.CharField(max_length=255)
