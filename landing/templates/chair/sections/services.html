@@ -2,7 +2,7 @@
 {% load mathfilters %}
     <section id="services">
         <div class="container">
-            <div class="row" style="margin-bottom: 0px;">
+            <div class="row hide-mobile" style="margin-bottom: 0px;">
                 {% for child in children %}
                 <div class="col-sm-{{12 | intdiv:children.count}} text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms" style="margin-bottom: 0px;">
                     <div class="single-service">
@@ -31,6 +31,27 @@
                     <div class="row">
                         {% for child in children %}
                         <div class="col-sm-{{12 | intdiv:children.count}} col-md-{{12 | intdiv:children.count}}">
+
+                            <div class="single-service show-mobile">
+                                <center>
+                                    <h2>{{child.product.title}}</h2>
+                                    <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="300ms">
+                                        <div class="portfolio-single">
+                                            <div class="portfolio-thumb">
+                                                <img src="{{child.product.main_image_url}}" class="img-responsive offer" alt="">
+                                            </div>
+                                            <div class="portfolio-view">
+                                                <ul class="nav nav-pills">
+                                                    <li><a href="{{child.product.main_image_url}}" data-lightbox="orders-set"><i class="fa fa-eye"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p>{{child.product.short_desc}}</p>
+                                <center>
+                            </div>
+
+
                             <div class="single-price {{child.parameters.price_block_class | default:'price-one'}}">
                                 <div class="table-heading">
                                     <p class="plan-name">{{child.product.alt_title | default:child.product.title}}</p>
