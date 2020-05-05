@@ -1,0 +1,127 @@
+{% extends 'yokofit/base.html' %}
+{% block meta_description %}Недорогой подарочный набор, состоящие из джунгарского хомячка, клетки и всего необходимого для жизни.{% endblock %}
+{% load static %}
+{% block content %}
+    <section id="portfolio-information" class="padding-top" style="padding-top:0px">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <img src="{% static "yokofit/images/hamster/2-ferplast-ombi-01.jpg" %}" class="img-responsive" alt="">
+                </div>
+                <div class="col-sm-6">
+                    <div class="project-name overflow">
+                        <h2 class="bold">Джунгарский хомячок</h2>
+                    </div>
+                    <div class="project-info overflow">
+                        {% if has_orders %}
+                        <div class="alert alert-warning fade in">
+                            <h4><center>Вы уже сделали заказ. Если хотите что-нибудь добавить, вы сможете это сделать, дождавшись звонка менеджера.</center></h4>
+                        </div>
+                        {% endif %}
+                        <form id="main-contact-form" name="contact-form" method="post" action="/create-order" data-price="3990">{% csrf_token %}
+                            <p>Для заказа укажите номер вашего телефона, мы с вами свяжемся в ближайшее время.</p>
+                            <input type="hidden" name="offer_id" value="2">
+                            <input type="hidden" name="page_id" value="{{ page.id }}">
+                            <input type="hidden" name="impression_id" value="{{ statistics.impression_id }}">
+                            <div class="form-group">
+                                <input type="phone" name="phone" class="form-control" required="required" placeholder="Номер телефона" style="border-color: #f0ad4e;" data-mask="+7(000)000-00-00" data-mask-selectonfocus="true">
+                            </div>
+                            <div class="form-group" style="text-align: center">
+                                <input type="submit" name="submit" class="btn btn-lg btn-warning" value="Заказать за 3990 рублей">
+                            </div>
+                        </form>
+
+                        <p>Мы не просто продаем Вам хомяка или клетку. Мы Вам привезем все, что необходимо для нормальной жизни питомца. А именно:
+                        </p>
+                        <ul class="elements">
+                            <li><i class="fa fa-angle-right"></i> Главного героя – джунгарского хомячка.</li>
+                            <li><i class="fa fa-angle-right"></i> Просторную клетку для постоянного обитания питомца.</li>
+                            <li><i class="fa fa-angle-right"></i> Небольшую упаковку корма, которой хватит на 2-3 месяца.</li>
+                            <li><i class="fa fa-angle-right"></i> Упаковку древесного наполнителя.</li>
+                            <li><i class="fa fa-angle-right"></i> Подробную инструкцию по уходу за хомячком.</li>
+                            <li><i class="fa fa-angle-right"></i> Море положительных эмоций всех, кто его увидит.</li>
+                        </ul>
+                        <p>Цена комплекта всего <strong>3990</strong> рублей, <strong>включая доставку</strong>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+     <!--/#portfolio-information-->
+
+    <section id="related-work" class="padding-top padding-bottom">
+        <div class="container">
+            <div class="row">
+                <h1 class="title text-center">В комплект доставки входит</h1>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "yokofit/images/hamster/Hamster1.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "yokofit/images/hamster/Hamster1.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                            <h2>Джунгарский хомячек</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "yokofit/images/hamster/2-ferplast-ombi-01.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "yokofit/images/hamster/2-ferplast-ombi-01.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                            <h2>Клетка для хомячка</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "yokofit/images/hamster/food1.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "yokofit/images/hamster/food1.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                            <h2>Упаковка корма</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "yokofit/images/hamster/floor1.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "yokofit/images/hamster/floor1.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                            <h2>Упаковка наполнителя</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

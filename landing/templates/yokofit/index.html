@@ -1,0 +1,181 @@
+{% extends 'yokofit/base.html' %}
+{% load static %}
+{% block content %}
+    <section id="home-slider">
+        <div class="container animate-in">
+            <div class="row">
+                <div class="col-sm-5">
+                    <h1>{% if smart.slider_title %}{{ smart.slider_title|safe }}{% else %}Фитнес рядом с Вами{%endif%}</h1>
+                    <p>Подарите себе мир комфортного фитнеса.</p>
+                    <p>YOKOFIT – поможет Вам заниматься различными фидами фитнеса, йогой, пилатесом и другими тренировками, требующими помощи простых спортивных принадлежностей.</p>
+                    <p>YOKOFIT предлагает коврики для йоги и фитнеса высокого качества из разных материалов и различной расцветки.</p>
+                    <p>Популярные массажные ролики (или цилиндры) YOKOFIT позволят самостоятельно снимать напряжение мышц.</p>
+                    <p>Наборы резинок и эспандеров создадут дополнительную нагрузку на мышцы при интенсивных тренировках.</p>
+                    <p>Выбирая YOKOFIT Вы получаете качественные финтнес принадлежности по разумным ценам.</p>
+                </div>
+                <div class="col-sm-7">
+                    <div style="height:450px;position:relative">
+                        <img src="{% static "yokofit/images/yokofit/main-slider.jpg" %}" class="slider-hill" alt="slider image" width="500">
+                        <img src="{% static "yokofit/images/home/slider/house.png" %}" class="slider-house" alt="slider image">
+                        <img src="{% static "yokofit/images/home/slider/sun.png" %}" class="slider-sun" alt="slider image">
+                        <img src="{% static "yokofit/images/home/slider/birds1.png" %}" class="slider-birds1" alt="slider image">
+                        <img src="{% static "yokofit/images/home/slider/birds2.png" %}" class="slider-birds2" alt="slider image">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="preloader"><i class="fa fa-sun-o fa-spin"></i></div>
+    </section>
+    <!--/#home-slider-->
+    <section style="height:50px"></section>
+
+    {% if smart.sections_order %}
+        {% for section in smart.sections_order %}
+            {% with "yokofit/sections/"|add:section|add:".html" as template %}
+                {% include template %}
+            {% endwith %}
+        {% endfor %}
+    {% else %}
+        {# include "yokofit/sections/services.html" #}
+        {% include "yokofit/sections/action.html" with action_title="Коврики для йоги" %}
+        {% include "yokofit/sections/features-mat.html" %}
+    {% endif %}
+
+    <!--section id="related-work" class="padding-top padding-bottom">
+        <div class="container">
+            <div class="row">
+                <h1 class="title text-center">Посмотрите, какие они милые!</h1>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "yokofit/images/hamster/Hamster1.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "yokofit/images/hamster/Hamster1.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "yokofit/images/hamster/Hamster2.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "yokofit/images/hamster/Hamster2.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "yokofit/images/hamster/Hamster4.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "yokofit/images/hamster/Hamster4.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "yokofit/images/hamster/Hamster3.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "yokofit/images/hamster/Hamster3.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "yokofit/images/hamster/Hamster5.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "yokofit/images/hamster/Hamster5.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "yokofit/images/hamster/Hamster6.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "yokofit/images/hamster/Hamster6.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "yokofit/images/hamster/Hamster7.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "yokofit/images/hamster/Hamster7.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="portfolio-wrapper">
+                        <div class="portfolio-single">
+                            <div class="portfolio-thumb">
+                                <img src="{% static "yokofit/images/hamster/Hamster8.jpg" %}" class="img-responsive" alt="">
+                            </div>
+                            <div class="portfolio-view">
+                                <ul class="nav nav-pills">
+                                    <li><a href="{% static "yokofit/images/hamster/Hamster8.jpg" %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portfolio-info ">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section-->
+
+{% endblock %}

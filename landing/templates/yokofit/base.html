@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>{% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% block meta_description %}YOKOFIT – аксессуары для фитнеса{% endblock %}">
+    <meta name="author" content="">
+    <title>{% block meta_title %}YOKOFIT – аксессуары для фитнеса{% endblock %}</title>
+    <script>var sessionid = "{{ request.session.session_key }}", impression_id = "{{ statistics.impression_id }}";</script>
+
+    <link href="{% static "yokofit/css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "yokofit/css/font-awesome.min.css" %}" rel="stylesheet">
+    <link href="{% static "yokofit/css/animate.min.css" %}" rel="stylesheet"> 
+    <link href="{% static "yokofit/css/lightbox.css" %}" rel="stylesheet"> 
+	<link href="{% static "yokofit/css/main.css" %}" rel="stylesheet">
+	<link href="{% static "yokofit/css/responsive.css" %}" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+	    <script src="js/html5shiv.js"></script>
+	    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="{% static "yokofit/images/favicon/favicon.ico" %}">
+    <link rel="apple-touch-icon" sizes="57x57" href="{% static "yokofit/images/favicon/apple-icon-57x57.png" %}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{% static "yokofit/images/favicon/apple-icon-60x60.png" %}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static "yokofit/images/favicon/apple-icon-72x72.png" %}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static "yokofit/images/favicon/apple-icon-76x76.png" %}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static "yokofit/images/favicon/apple-icon-114x114.png" %}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{% static "yokofit/images/favicon/apple-icon-120x120.png" %}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{% static "yokofit/images/favicon/apple-icon-144x144.png" %}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{% static "yokofit/images/favicon/apple-icon-152x152.png" %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static "yokofit/images/favicon/apple-icon-180x180.png" %}">
+    <link rel="icon" type="image/png" sizes="192x192"  href="{% static "yokofit/images/favicon/android-icon-192x192.png" %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static "yokofit/images/favicon/favicon-32x32.png" %}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static "yokofit/images/favicon/favicon-96x96.png" %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static "yokofit/images/favicon/favicon-16x16.png" %}">
+    <link rel="manifest" href="{% static "yokofit/images/favicon/manifest.json" %}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static "yokofit/images/favicon/apple-icon-144x144.png" %}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static "yokofit/images/favicon/apple-icon-114x114.png" %}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static "yokofit/images/favicon/apple-icon-72x72.png" %}">
+    <link rel="apple-touch-icon-precomposed" href="{% static "yokofit/images/favicon/apple-icon-57x57.png" %}">
+
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{% static "yokofit/images/favicon/ms-icon-144x144.png" %}">
+    <meta name="theme-color" content="#ffffff">
+
+</head><!--/head-->
+
+<body>
+	<header id="header">      
+        <div class="navbar navbar-inverse" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <a class="navbar-brand" href="/" data-referer-button="logo">
+                        <h1><img src="{% static "yokofit/images/yokofit/yokofit_logo_black_286x64.png" %}" alt="logo"></h1>
+                    </a>
+                    
+                </div>
+                <!--div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="{%if page.url == ''%}active{%endif%}"><a href="/" data-referer-button="menu-main">YOKOFIT</a></li>
+                        <li class="{%if page.url == 'about.html'%}active{%endif%}"><a href="/about.html" data-referer-button="menu-about">Описание</a>
+                    </ul>
+                </div-->
+            </div>
+        </div>
+    </header>
+    <!--/#header-->
+    {% block content %}{% endblock %}
+
+    <script type="text/javascript" src="{% static "yokofit/js/jquery.js" %}"></script>
+    <script type="text/javascript" src="{% static "yokofit/js/bootstrap.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "yokofit/js/lightbox.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "yokofit/js/jquery.mask.js" %}"></script>
+    <script type="text/javascript" src="{% static "yokofit/js/wow.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "yokofit/js/main.js" %}"></script>
+    {% if not preview %}
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (d, w, c) {
+            var yaParams = {};
+            {% if creative %}
+                yaParams["creative_id"] = "{{creative.id}}";
+            {% endif %}
+            (w[c] = w[c] || []).push(function() {
+                try {
+                    w.yaCounterMain = new Ya.Metrika({
+                        id:{% if host.domain == 'yokofit.ru' %}62555947{% else %}44839867{% endif %},
+                        clickmap:true,
+                        trackLinks:true,
+                        accurateTrackBounce:true,
+                        webvisor:true,
+                        ecommerce:"dataLayer",
+                        params: yaParams
+                    });
+                } catch(e) { }
+            });
+
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else { f(); }
+        })(document, window, "yandex_metrika_callbacks");
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/{% if host.domain == 'yokofit.ru' %}62555947{% else %}44839867{% endif %}" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    {% endif %}
+</body>
+</html>
