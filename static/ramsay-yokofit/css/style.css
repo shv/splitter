@@ -1946,13 +1946,25 @@ a.brand:focus{
 /* ------------------------------------------------------------------------------- */
 
 
+/* Узкие телефоны */
+@media (max-width: 400px){
+  h1, .h1, .display-2{
+    font-weight: 300;
+    font-size: 3rem;
+  }
+  h2,.h2, .project-title{ 
+    font-weight: 300;
+    font-size: 2.8rem;
+  }
+  h3,.h3{
+    font-weight: 300;
+    font-size: 2.5rem;  }
+  }
+}
+
 
 /* 5.1 Min width 576px */
-
-
-
 @media (min-width: 576px){
-
   .menu{
     width:50%;
   }
