@@ -78,7 +78,7 @@ body{
   line-height: 1.9428;
   color: #111;
   background: #7b7b7b;
-  -webkit-overflow-scrolling:touch;
+  /*-webkit-overflow-scrolling:touch;*/
 }
 
 ::-webkit-scrollbar{
@@ -805,7 +805,7 @@ a.brand:focus{
   padding-left: 15%;
   overflow-x:hidden;
   overflow-y:auto;
-  -webkit-overflow-scrolling:touch;
+  /*-webkit-overflow-scrolling:touch;*/
   overflow-scrolling:touch;
   font-weight: 600;
   letter-spacing: -0.025rem;
