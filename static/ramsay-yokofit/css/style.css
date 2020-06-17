@@ -1583,7 +1583,7 @@ a.brand:focus{
   position:relative;
 }
 
-.project-row a:after,
+/*.project-row a:after,
 .project-row a.active:after,
 .project-detail-row a:after{
   content:'';
@@ -1605,7 +1605,7 @@ a.brand:focus{
 .project-row a.active:after,
 .project-detail-row a:hover:after{
   opacity:1;
-}
+}*/
 
 .project-row a.active{
   opacity: 1;
