@@ -1064,7 +1064,8 @@ a.brand:focus{
 
 
 .pagepiling .section{
-  background: #ababab;
+  /*background: #ababab;*/
+  background: #fff;
   padding-top: 10.3rem;
   padding-bottom: 6rem;
 }
