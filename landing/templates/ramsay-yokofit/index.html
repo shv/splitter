@@ -1,109 +1,16 @@
-<!DOCTYPE HTML>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author" content="">
+{% extends 'ramsay-yokofit/wrapper.html' %}
 
-<!-- Favicons -->
-<link rel="shortcut icon" href="/static/ramsay-yokofit/favicon.png">
-<link rel="apple-touch-icon" href="/static/ramsay-yokofit/apple-touch-icon.png">
-<link rel="apple-touch-icon" sizes="72x72" href="/static/ramsay-yokofit/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="114x114" href="/static/ramsay-yokofit/apple-touch-icon-114x114.png">
-
-<title>YOKOFIT - коврики для фитнеса и йоги</title> 
-
-<!-- Styles -->
-<link href="https://fonts.googleapis.com/css?family=Montserrat:500,600,700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,400i&display=swap" rel="stylesheet">
-<link href="/static/ramsay-yokofit/css/style.css" rel="stylesheet" media="screen">
-</head>
-<body>
-  <div class="animsition">   
-    <!--div class="loader"><div class="spinner"><div class="double-bounce1"></div><div class="double-bounce2"></div></div></div-->
-
-    <!-- Content CLick Capture-->
-
-    <!--div class="click-capture"></div-->
-
-    <!-- Sidebar Menu-->
-
-    <div class="menu"> 
-      <span class="close-menu icon-cross2 right-boxed"></span>
-      <ul class="menu-list right-boxed">
-        <li  data-menuanchor="page1">
-          <a  href="#page1">Старт</a>
-        </li>
-        <li  data-menuanchor="page2">
-          <a href="#page2">Продукция</a>
-        </li>
-        <li  data-menuanchor="page3">
-          <a href="#page3">Коврики</a>
-        </li>
-        <li  data-menuanchor="page4">
-          <a href="#page4">Ролики</a>
-        </li>
-        <li  data-menuanchor="page5">
-          <a href="#page5">Резинки</a>
-        </li>
-        <li  data-menuanchor="page7">
-          <a href="#page7">Testimonials</a>
-        </li>
-        <li  data-menuanchor="page8">
-          <a href="#page8">Contact</a>
-        </li>
-      </ul>
-      <div class="menu-footer right-boxed">
-        <div class="social-list">
-          <a href="" class="icon ion-social-twitter"></a>
-          <a href="" class="icon ion-social-facebook"></a>
-          <a href="" class="icon ion-social-googleplus"></a>
-          <a href="" class="icon ion-social-linkedin"></a>
-          <a href="" class="icon ion-social-dribbble-outline"></a>
-        </div>
-        <div class="copy">© YOKOFIT 2020. All Rights Reseverd</div>
-      </div>
-    </div>
-
-    <!-- Navbar -->
-
-    <header class="navbar navbar-fullpage boxed">
-      <!--div class="navbar-bg"></div-->
-      <a class="brand" href="#">
-        <img alt="" src="/static/ramsay-yokofit/images/brand.png">
-        <div class="brand-info">
-          <div class="brand-name">YOKOFIT</div>
-        </div>
-      </a>
-
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      
-      <div class="contacts d-none d-md-block">
-        <div class="contact-item">
-          +7(926)527-58-80
-        </div>
-        <div class="contact-item spacer">
-          /
-        </div>
-        <div class="contact-item">
-          <a href="mailto:contact@Ramsay.com">contact@yokofit.ru</a>
-        </div>
-      </div>
-    </header>
-    <div class="copy-bottom white boxed">© YOKOFIT 2020.</div>
-    <div class="social-list social-list-bottom boxed">
+{% block content %}
+    <div class="copy-bottom white boxed">© YOKOFIT 2020</div>
+    <!--div class="social-list social-list-bottom boxed">
         <a href="" class="icon ion-social-twitter"></a>
         <a href="" class="icon ion-social-facebook"></a>
         <a href="" class="icon ion-social-googleplus"></a>
         <a href="" class="icon ion-social-linkedin"></a>
         <a href="" class="icon ion-social-dribbble-outline"></a>
-      </div>
+    </div-->
     <div class="pagepiling">
+
       <div data-anchor="page1" class="pp-scrollable text-black section section-1">
         <div class="scroll-wrap">
           <div class="section-bg" style="background-image:url(/static/ramsay-yokofit/images/yokofit/bg/main.jpg);"></div>
@@ -116,7 +23,7 @@
                       <div class="row">
                         <div class="col-md-8 col-lg-6">
                           <h1 class="display-2 text-black  wow fadeIn" data-wow-delay="0.1s"><span class="text-primary">YOKOFIT,</span><br>там где фитнес</h1>
-                          <a class="popup-youtube"  href="http://www.youtube.com/watch?v=0O2aH4XLbto"><span class="icon ion-ios-play"></span>Смотреть видео </a>
+                          <!--a class="popup-youtube"  href="http://www.youtube.com/watch?v="><span class="icon ion-ios-play"></span>Смотреть видео </a-->
                         </div>
                       </div>
                     </div>
@@ -140,27 +47,29 @@
                       <div class="row-specialization row">
                         <div class="col-specialization col-md-6 col-lg-4">
                           <!-- <span class="icon-specialization icon-laptop-phone"></span> -->
-                            <div style="width:225px;height:100px;background-image:url(/static/ramsay-yokofit/images/yokofit/bg/ico-mats.png);"></div>
+                          <div style="width:225px;height:100px;background-image:url(/static/ramsay-yokofit/images/yokofit/bg/ico-mats.png);"></div>
 
                           <h4 class="text-uppercase">Коврики</h4>
-                          <p>Коврики для фитнеса и йоги изготовлены из гипоалергенного материала - термопластичного элестомера. Этот материал является оптимальным из соотношения цена / качество. При достаточно невысокой стоимости коврики из TPE прочные, мягкие, не скользкие и не растягиваются.</p>
+                          <p>Коврики для фитнеса и йоги изготовлены из гипоалергенного материала. Этот материал является оптимальным из соотношения цена / качество. Коврики прочные, не скользкие и не растягиваются.</p>
                         </div>
                         <div class="col-specialization col-md-6 col-lg-4">
-                          <span class="icon-specialization icon-smartphone-embed"></span>
+                          <!-- <span class="icon-specialization icon-smartphone-embed"></span> -->
+                          <div style="width:225px;height:100px;background-image:url(/static/ramsay-yokofit/images/yokofit/bg/ico-roll.png);"></div>
                           <h4 class="text-uppercase">Ролики</h4>
-                          <p>Массажный ролик изготовлен из пластика и мягкого полимерного материала. Имея несложную конструкцию массажный ролик является хорошим помощником при разминке и после интенсивных занятий. Он эфективно разомнет мышцы.</p>
+                          <p>Массажный ролик изготовлен из пластика и мягкого полимерного материала. Имея несложную конструкцию массажный ролик поможет размять мышцы при разминке и после интенсивных занятий.</p>
                         </div>
                         <div class="col-specialization col-md-6 col-lg-4">
-                          <span class="icon-specialization icon-diamond2"></span>
+                          <!-- <span class="icon-specialization icon-diamond2"></span> -->
+                          <div style="width:225px;height:100px;background-image:url(/static/ramsay-yokofit/images/yokofit/bg/ico-lines.png);"></div>
                           <h4 class="text-uppercase">Резинки</h4>
-                          <p>Простейшее в конструкции приспособление прочно закрепилось как в разминочных так и в силовых и кардио упражнениях. С помощью резинок вы можете увеличивать нагрузку как в статических, так и динамических тренировках.</p>
+                          <p>Простейшее в конструкции приспособление прочно закрепилось в разминочных, силовых и кардио упражнениях. С помощью резинок вы можете увеличивать нагрузку как в статических, так и динамических тренировках.</p>
                         </div>
                       </div>
-                      <div class="view-all">
+                      <!--div class="view-all">
                         <a href="#">
                           Download resume
                         </a>
-                      </div>
+                      </div-->
                     </div>
                   </div>
                 </div>
@@ -306,17 +215,17 @@
                       <div class="row">
                         <div class="col-md-12">
                           <div class="project-row">
-                            <a class="active" href="project-detail.html">
+                            <a class="active" href="/kovriki-iz-tpe.html">
                               <span class="project-number">01</span>
-                              <h2 class="project-title">Коврик 6 мм из TPE</h2>
-                              <div class="project-category">Материал: TPE, размер: 183 х 61 см, 6 мм</div>
+                              <h2 class="project-title">Коврики из TPE</h2>
+                              <div class="project-category">Материал: термопластичный эластомер, размер: 183 х 61 см, толщина: 6 мм</div>
                             </a>
                           </div>
                           <div class="project-row">
-                            <a href="project-detail.html">
+                            <a href="/kovriki-iz-pvc.html">
                               <span class="project-number">02</span>
-                              <h2 class="project-title">Коврик 4 мм</h2>
-                              <div class="project-category">Материал: полиэстр, размер: 183 х 61 см, 4 мм</div>
+                              <h2 class="project-title">Коврики из ПВХ</h2>
+                              <div class="project-category">Материал: поливинилхлорид, размер: 183 х 61 см, толщина: 4 мм</div>
                             </a>
                           </div>
                           <!--div class="project-row">
@@ -364,10 +273,10 @@
                       <div class="row">
                         <div class="col-md-12">
                           <div class="project-row">
-                            <a class="active" href="project-detail.html">
+                            <a class="active" href="/fitness-roliki.html">
                               <span class="project-number">01</span>
-                              <h2 class="project-title">Выбрать цвет</h2>
-                              <div class="project-category">Массажные ролики</div>
+                              <h2 class="project-title">Варианты</h2>
+                              <div class="project-category">Массажные ролики разного цвета и размера</div>
                             </a>
                           </div>
                           <!--div class="project-row">
@@ -422,10 +331,10 @@
                       <div class="row">
                         <div class="col-md-12">
                           <div class="project-row">
-                            <a class="active" href="project-detail.html">
+                            <a class="active" href="fitness-rezinki.html">
                               <span class="project-number">01</span>
-                              <h2 class="project-title">Смотреть подробнее</h2>
-                              <div class="project-category">Детали и цены</div>
+                              <h2 class="project-title">Без вариантов</h2>
+                              <div class="project-category">Есть только один популярный набор из 5 цветов</div>
                             </a>
                           </div>
                           <!--div class="project-row">
@@ -678,21 +587,9 @@
             </div>
           </div>
         </div>
-      </div>
+      </div-->
     </div>
-  </div-->
+  </div>
 <!-- jQuery -->
 
-<script src="/static/ramsay-yokofit/js/jquery.min.js"></script>
-<script src="/static/ramsay-yokofit/js/wow.min.js"></script>
-<script src="/static/ramsay-yokofit/js/smoothscroll.js"></script>
-<script src="/static/ramsay-yokofit/js/animsition.js"></script>
-<script src="/static/ramsay-yokofit/js/jquery.validate.min.js"></script>
-<script src="/static/ramsay-yokofit/js/jquery.magnific-popup.min.js"></script>
-<script src="/static/ramsay-yokofit/js/owl.carousel.min.js"></script>
-<script src="/static/ramsay-yokofit/js/jquery.pagepiling.min.js"></script>
-
-<!-- Scripts -->
-<script src="/static/ramsay-yokofit/js/scripts.js"></script> 
-</body>
-</html>
+{% endblock %}

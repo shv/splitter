@@ -77,7 +77,8 @@ body{
   letter-spacing: 0.025em;
   line-height: 1.9428;
   color: #111;
-  background: #7b7b7b;
+  /*background: #7b7b7b;*/
+  background: #fff;
   /*-webkit-overflow-scrolling:touch;*/
 }
 
@@ -351,7 +352,7 @@ label.error{
 
 
 .btn{
-  color:#111;
+  color:#fff;
   letter-spacing: 0.025em;
   font-size: 1rem;
   display: inline-block;
@@ -367,10 +368,26 @@ label.error{
 .btn:hover,
 .btn:focus{
   background-color:#55468b;
-  color: #111;
+  color: #fff;
   -webkit-box-shadow:none;
   box-shadow: none;
   outline: none!important;
+}
+
+.btn.btn-ozon{
+  background-color: #005bff;
+  font-weight: 700;
+}
+.btn.btn-ozon:hover, .btn.btn-ozon:focus{
+  background-color: #004ed6;
+}
+.btn.btn-wb{
+  background-color: #cb11ab;
+  font-weight: 700;
+}
+.btn.btn-wb:hover, .btn.btn-wb:focus{
+  background-color: #cb11ab;
+  opacity: 0.9;
 }
 
 
