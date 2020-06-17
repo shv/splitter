@@ -577,7 +577,7 @@ label.error{
   top: -1px;
   width: 100%;
   height: 0;
-  background: #272727;
+  background: #fff;
   z-index: -1;
   box-shadow: none;
   -webkit-transition: all 0.3s cubic-bezier(0.37, 0.31, 0.2, 0.85);
@@ -1583,7 +1583,7 @@ a.brand:focus{
   position:relative;
 }
 
-.project-row a:after,
+/*.project-row a:after,
 .project-row a.active:after,
 .project-detail-row a:after{
   content:'';
@@ -1605,7 +1605,7 @@ a.brand:focus{
 .project-row a.active:after,
 .project-detail-row a:hover:after{
   opacity:1;
-}
+}*/
 
 .project-row a.active{
   opacity: 1;
@@ -1920,7 +1920,7 @@ a.brand:focus{
 }
 .image-holder{
   display:block;
-  margin:12rem auto 7rem;
+  margin:3rem auto 3rem;
   max-width:100%;
 }
 
@@ -1954,7 +1954,7 @@ a.brand:focus{
 .project-detail-text{
   color: #111;
   font-size:1.2rem;
-  margin-bottom: 5rem;
+  margin-bottom: 2rem;
 }
 
 
